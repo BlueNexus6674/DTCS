@@ -1,5 +1,27 @@
 # Cayde_ROS_Isaac
-Cayde ROS Isaac SIM Package, created by Leo Walker for DTCS
+## Description
+Functions:
+- Provides a launcher (CaydeLauncher) to automate tasks
+  - Running common ROS features
+  - Running Isaac SIM Standalone Applications (commonly Cortex / Gym)
+  - Launching complex folders
+  - Utility Menu
+  - General Install Menu:
+- IsaacSIM_Python
+  - Adds a custom cayde_robot.py that makes it easy to add custom robots and control them with custom RMPFlows
+  - Makes it easy to add custom .py scripts to Isaac SIM Python
+- Cayde
+  - Folder of behaviours and descriptions for a UR5 nicknamed Cayde
+- ROS / ROS2 Master Workspaces allowing for easy organisation and seperation of scripts
+
+Currently only compatible with Ubuntu 20.04, support provided for:
+- Isaac SIM 2022.2
+- ROS Noetic
+- ROS2 Foxy
+
+Authored by LW, Undergraduate of Mechatronic Engineering at Lancaster University for the dissertation titled:
+
+```Developing and Implementing a Digital Twin Control System (DTCS) for a UR5 utilising ROS and Nvidia ISaac SIM```
 
 ## Usage:
 
@@ -7,26 +29,26 @@ I AM Cayde
 
 ## Install Instructions:
 
-Step 1: Download CaydeSetupScript.bash and place in ```~/Documents```
+1. Download CaydeSetupScript.bash and place in ```~/Documents```
 
-Step 2: Make executable and launch CaydeSetupScript.bash
+2. Make executable and launch CaydeSetupScript.bash
 ```bash
 cd ~/Documents
 chmod u+x CaydeSetupScript.bash
 ~/Documents/CaydeSetupScript.bash
 ```
 
-Step 3: Select ```Auto-Install```
+3. Select ```Auto-Install```
 
-Step 4: Add CaydeLauncher to Favourites from AppDrawer
+4. Add CaydeLauncher to Favourites from AppDrawer
 
-Step 5: Optionally delete CaydeSetupScript.bash
+5. Optionally delete CaydeSetupScript.bash
 
-Step 6: Open CaydeLauncher
+6. Open CaydeLauncher
 
-Step 7: Select ```Install Enviroment Menu```
+7. Select ```Install Enviroment Menu```
 
-Step 8: Install Enviroment Menu options as needed
+8. Install Enviroment Menu options as needed
 
 
 
