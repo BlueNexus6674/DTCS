@@ -1,7 +1,11 @@
 # Cayde_ROS_Isaac
 Cayde ROS Isaac SIM Package, created by Leo Walker for DTCS
 
-Install Instructions:
+## Usage:
+
+I AM Cayde
+
+## Install Instructions:
 
 Step 1: Clone the repository
 ```bash
@@ -29,6 +33,4 @@ Step 8: Install Enviroment Menu options as needed
 
 
 
-I AM Cayde
 
-Please Help
