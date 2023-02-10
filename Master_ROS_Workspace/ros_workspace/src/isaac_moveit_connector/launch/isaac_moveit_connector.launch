@@ -1,0 +1,6 @@
+<launch>
+	
+	<node name="isaac_moveit_connector" pkg="isaac_moveit_connector" type="isaac_moveit_connector.py" respawn="false" output="screen">
+	</node>
+
+</launch>

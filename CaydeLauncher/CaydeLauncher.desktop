@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec="/home/cayde/Documents/CaydeRepo/CaydeLauncher/CaydeLauncher.bash"
+Name=CaydeLauncher
+Comment=CaydeLauncher
+Icon=/home/cayde/Documents/CaydeRepo/CaydeLauncher/CaydeLauncher.png

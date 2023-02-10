@@ -1,8 +1,0 @@
-setup.py
-custom_isaac_repo/__init__.py
-custom_isaac_repo/cayde_robot.py
-custom_isaac_repo.egg-info/PKG-INFO
-custom_isaac_repo.egg-info/SOURCES.txt
-custom_isaac_repo.egg-info/dependency_links.txt
-custom_isaac_repo.egg-info/not-zip-safe
-custom_isaac_repo.egg-info/top_level.txt
