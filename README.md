@@ -5,7 +5,7 @@ Install Instructions:
 
 Step 1: Clone the repository
 ```bash
-git clone https://github.com/BlueNexus6674/Cayde_ROS_Isaac/.git ~/Documents/CaydeRepo/
+git clone https://github.com/BlueNexus6674/Cayde_ROS_Isaac.git ~/Documents/CaydeRepo/
 ```
 
 Step 2: Launch CaydeLauncher
