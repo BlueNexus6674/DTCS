@@ -16,19 +16,17 @@ chmod u+x CaydeSetupScript.bash
 ~/Documents/CaydeSetupScript.bash
 ```
 
-Step 3: Select ```Clone Repo```
+Step 3: Select ```Auto-Install```
 
-Step 4: Select ```Install Cayde Launcher```
+Step 4: Add CaydeLauncher to Favourites from AppDrawer
 
-Step 5: Add CaydeLauncher to Favourites from AppDrawer
+Step 5: Optionally delete CaydeSetupScript.bash
 
-Step 6: Optionally delete CaydeSetupScript.bash
+Step 6: Open CaydeLauncher
 
-Step 7: Open CaydeLauncher
+Step 7: Select ```Install Enviroment Menu```
 
-Step 8: Select ```Install Enviroment Menu```
-
-Step 9: Install Enviroment Menu options as needed
+Step 8: Install Enviroment Menu options as needed
 
 
 
