@@ -156,10 +156,18 @@ do
 		echo "6: Install UR ROS2 Driver"
 		echo "7: Install ROS (Noetic) Isaac SIM Workspace"
 		echo "8: Install ROS2 (Foxy) Isaac SIM Workspace"
-		echo "9: Install CustomIsaacRepo"
+		echo "9: Install IsaacSIM_Python (Add-On)"
+		echo "80: Install customrobot_workspace ROS (Catkin_Make and Source)"
+		echo "81: Install moveit_workspace ROS (Catkin_Make and Source) "
 		echo "98: Install ROS Control"
 		echo "99: Install MoveIT"
 		echo ""
+		echo ""
+		echo ""
+		echo "Please only enter option 7 or 8 after installing the Omniverse AppImage provided by Nvidia, and then installing and launching IsaacSIM at least once"
+		echo ""
+		echo ""
+		echo""
 		
 		while true; do read -p "Select Option: " select
 	    case $select in
@@ -172,6 +180,8 @@ do
 		[7]* ) option=607; break;;
 		[8]* ) option=608; break;;
 		[9]* ) option=609; break;;
+		[80]* ) option=680; break;;
+		[81]* ) option=681; break;;
 		[98]* ) option=698; break;;
 		[99]* ) option=699; break;;
 		[Xx]* ) option=0; break;;
@@ -279,7 +289,9 @@ do
 	
 	if [ $option -eq  601 ]
 	then
+		echo ""
 		echo "Installing CaydeLauncher"
+		echo ""
 		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/CaydeLauncher.desktop"
 		DestinationLauncherPath="~/.local/share/applications/CaydeLauncher.desktop"
 		cp $CaydeLauncherPath $DestinationLauncherPath
@@ -287,23 +299,29 @@ do
 	
 	if [ $option -eq  602 ]
 	then
-		#--- Linux Setup ---#
+		echo ""
+		echo "Config Linux (Updating)"
+		echo ""
 		sudo apt update && sudo apt upgrade
-		cd ~/Documents
+		
+		echo "${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash" >> ~/.bashrc
+		#cd ~/Documents/CaydeRepo
+		#echo "HelpMe" >> ~/.bashrc
+		
 
 		#Work Folders
-		mkdir -p CustomIsaacRepo
-		mkdir -p IsaacSimURDF
+		#mkdir -p CustomIsaacRepo
+		#mkdir -p IsaacSimURDF
 
 		#Catkin workspace creation
-		mkdir -p ros_workspace/src
-		mkdir -p ros2_workspace/src
-		mkdir -p customrobot_workspace/src
-		mkdir -p moveit_workspace/src/ur5_with_rg2_moveit_configuration
+		#mkdir -p ros_workspace/src
+		#mkdir -p ros2_workspace/src
+		#mkdir -p customrobot_workspace/src
+		#mkdir -p moveit_workspace/src/ur5_with_rg2_moveit_configuration
 
 		#Source workspaces in all terminals
-		nano ~/.bashrc
-
+		#nano ~/.bashrc
+		
 		#Add the following at the end for ROS
 		#source /opt/ros/noetic/setup.bash
 		#source ~/Documents/ros_workspace/devel/setup.bash
@@ -315,12 +333,13 @@ do
 		#source ~/Documents/ros2_workspace/install/setup.bash
 		#source ~/Documents/customrobot_workspace/install/setup.bash
 		#source ~/Documents/moveit_workspace/install/setup.bash
-		#--- END Linux END ---#
 	fi
 	
 	if [ $option -eq  603 ]
 	then
-		#--- ROS (Noetic) Install Start ---#
+		echo ""
+		echo "ROS Noetic Install"
+		echo ""
 		sudo apt update && sudo apt upgrade
 		#Instructions from http://wiki.ros.org/noetic/Installation/Ubuntu
 		 
@@ -339,6 +358,7 @@ do
 		 
 		#Source ROS
 		source /opt/ros/noetic/setup.bash
+		echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 
 		#Dependencies for building packages
 		sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
@@ -347,12 +367,13 @@ do
 		sudo apt install python3-rosdep
 		sudo rosdep init
 		rosdep update
-		#--- ROS (Noetic) Install End---#
 	fi
 	
 	if [ $option -eq  604 ]
 	then
-		#--- ROS2 (Foxy) Install Start ---#
+		echo ""
+		echo "ROS2 Foxy Install"
+		echo ""
 		#Instructions from https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 
 		sudo apt update && sudo apt upgrade
@@ -375,25 +396,27 @@ do
 
 		#Source setup script
 		#source /opt/ros/foxy/setup.bash
-		 
+		#echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+		
 		#For rosdep install command
-		sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+		sudo apt install ros-dev-tools
 		 
 		#For colcon build command
 		sudo apt install python3-colcon-common-extensions
-		#--- ROS2 (Foxy) Install End ---#
 	fi
 	
 	if [ $option -eq  605 ]
 	then
-		#--- Universal_Robots_ROS-Driver (Noetic) Install Start ---#
+		echo ""
+		echo "Universal_Robots_ROS-Driver (Noetic) Install"
+		echo ""
 		#Instructions from https://github.com/UniversalRobots/Universal_Robots_ROS_Driver
 		 
 		#Source ROS Noetic
 		source /opt/ros/noetic/setup.bash
 		 
 		#Move to Catkin Workspace
-		cd ~/Documents/ros_workspace/src
+		cd ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/src
 
 		#Clone the Driver
 		git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git Universal_Robots_ROS_Driver
@@ -402,6 +425,7 @@ do
 		git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git universal_robot
 			 
 		#Install Dependencies
+		cd ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace
 		sudo apt update -qq
 		rosdep update
 		rosdep install --from-paths src --ignore-src -y
@@ -410,47 +434,50 @@ do
 		catkin_make
 		 
 		#Source ROS_Workspace
-		source ~/Documents/ROS_Workspace/devel/setup.bash 
-
-		#--- Universal_Robots_ROS-Driver (Noetic)  Install End ---#
+		source ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash 
 	fi
 	
 	if [ $option -eq  606 ]
 	then
-		#--- Universal_Robots_ROS2-Driver (Foxy) WIP Install ---#
 		echo ""
-		#--- Universal_Robots_ROS2-Driver (Foxy)  Install End ---#
+		echo "Universal_Robots_ROS2-Driver (Foxy) WIP Install"
+		echo "Currently not working..."
+		echo ""
 	fi
 	
 	if [ $option -eq  607 ]
 	then
-		#--- Isaac SIM Workspace (Noetic) Install Start ---#
+		echo ""
+		echo "Isaac SIM Workspace (Noetic) Install Install"
+		echo ""
 		#Instructions from https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_ros.html
 		 
-		#WIP Move IsaacSIM Workspace from Isaac Sim Install to ~/Documents/ros_workspace/src/
-
+		#Move IsaacSIM Workspace from Isaac Sim Install to /CaydeRepoPath/Master_ROS_Workspace/ros_workspace/src
+		cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace/src/* ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/src/
+		
 		#Source ROS
 		source /opt/ros/noetic/setup.bash
 		 
 		#Resolve dependencies
-		cd ~/Documents/ros_workspace
+		cd ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace
 		rosdep install -i --from-path src --rosdistro noetic -y
 
 		#Build ros_Workspace
 		catkin_make
 		 
 		#Source ros_workspace
-		source ~/Documents/ros_workspace/devel/setup.bash 
-
-		#--- Isaac SIM Workspace (Noetic)  Install End ---#
+		source ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash 
 	fi
 	
 	if [ $option -eq  608 ]
 	then
-		#--- Isaac SIM Workspace (Foxy) Install Start ---#
+		echo ""
+		echo "Isaac SIM Workspace (Foxy) Install Install"
+		echo ""
 		#Instructions from https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_ros.html
 		 
-		#WIP Move Isaac SIM Workspace from Isaac Sim Install to ~/Documents/ros2_workspace/src
+		#Move Isaac SIM Workspace2 from Isaac Sim Install to ~/CaydeRepoPath/Master_ROS2_Workspace/ros2_workspace/src
+		cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace2/src/* ${CaydeRepoPath}/Master_ROS2_Workspace/ros2_workspace/src/
 		 
 		#Source ROS
 		source /opt/ros/foxy/setup.bash
@@ -463,27 +490,58 @@ do
 		colcon build
 		 
 		#Source ros2_workspace
-		source ~/Documents/ros2_workspace/install/local_setup.bash
-		 
-		#--- Isaac SIM Workspace (Foxy) Install End ---#
+		source ${CaydeRepoPath}/Master_ROS2_Workspace/ros2_workspace/install/setup.bash 
 	fi
 	
 	if [ $option -eq  609 ]
 	then
-		#--- Install CustomIsaacRepo WIP ---#
 		echo ""
+		echo "IsaacSIM_Python (Add-on) Install"
+		echo ""
+		cd ${CaydeRepoPath}/IsaacSIM_Python
+		$IsaacPythonPath -m pip install -e .
+	fi
+	
+	if [ $option -eq  680 ]
+	then
+		echo ""
+		echo "customrobot_workspace"
+		echo ""
+		cd ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace
+		rosdep install -i --from-path src --rosdistro noetic -y
+		catkin_make
+		source ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace/devel/setup.bash 
+		echo "${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace/devel/setup.bash" >> ~/.bashrc
+		
+
+	fi
+	
+	if [ $option -eq  681 ]
+	then
+		echo ""
+		echo "moveit_workspace"
+		echo ""
+		cd ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace
+		rosdep install -i --from-path src --rosdistro noetic -y
+		catkin_make
+		source ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace/devel/setup.bash 
+		echo "${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace/devel/setup.bash" >> ~/.bashrc
+		
 	fi
 	
 	if [ $option -eq  698 ]
 	then
-		#--- ROSControl WIP ---#
-		#sudo apt install ros-noetic-moveit
 		echo ""
+		echo "ROS Control Install"
+		echo ""
+		sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers
 	fi
 	
 	if [ $option -eq  699 ]
 	then
-		#--- MoveIT ---#
+		echo ""
+		echo "ROS Moveit Install"
+		echo ""
 		sudo apt install ros-noetic-moveit
 		
 	fi
