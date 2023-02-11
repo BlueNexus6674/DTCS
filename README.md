@@ -19,7 +19,7 @@ Currently only compatible with Ubuntu 20.04, support provided for:
 - ROS Noetic
 - ROS2 Foxy
 
-Authored by LW, Undergraduate of Mechatronic Engineering at Lancaster University for the dissertation titled:
+Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster University for the dissertation titled:
 
 ```Developing and Implementing a Digital Twin Control System (DTCS) for a UR5 utilising ROS and Nvidia ISaac SIM```
 
