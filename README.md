@@ -24,6 +24,15 @@ Authored by LW, Undergraduate of Mechatronic Engineering at Lancaster University
 ```Developing and Implementing a Digital Twin Control System (DTCS) for a UR5 utilising ROS and Nvidia ISaac SIM```
 
 ## Usage:
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/65248566/218260574-a83cd6ab-07f8-4f88-8f2c-bebf3f48dbf3.png" width=100 height=100 />
+</p>
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/65248566/218261000-a43e2090-6c92-48e2-840b-360386d21f69.png" />
+</p>
+
+
 
 I AM Cayde
 
