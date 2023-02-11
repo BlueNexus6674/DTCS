@@ -3,7 +3,7 @@
 clear
 
 GitClonePath=https://github.com/BlueNexus6674/Cayde_ROS_Isaac.git
-CaydeRepoPath=~/Documents/CaydeRepo2/
+CaydeRepoPath=~/Documents/CaydeRepo/
 
 ecode=0
 while [ $ecode -eq 0 ]
@@ -21,9 +21,9 @@ do
 
 	while true; do read -p "Select Option: " select
 	    case $select in
-		[1]* ) option=1; break;;
-		[2]* ) option=2; break;;
-		[3]* ) option=3; break;;
+		1) option=1; break;;
+		2) option=2; break;;
+		3) option=3; break;;
 		[Xx]* ) ecode=1; echo "Exiting..."; break;;
 		* ) echo "Please answer a correct answer.";;
 	    esac
@@ -40,7 +40,7 @@ do
 		echo ""
 		echo "Step: Installing CaydeLauncher"
 		echo ""
-		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/CaydeLauncher.desktop"
+		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
 		DestinationLauncherPath="~/.local/share/applications/CaydeLauncher.desktop"
 		cp $CaydeLauncherPath $DestinationLauncherPath
 	fi
@@ -58,7 +58,7 @@ do
 		echo ""
 		echo "Step: Installing CaydeLauncher"
 		echo ""
-		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/CaydeLauncher.desktop"
+		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
 		DestinationLauncherPath="~/.local/share/applications/CaydeLauncher.desktop"
 		cp $CaydeLauncherPath $DestinationLauncherPath
 	fi
