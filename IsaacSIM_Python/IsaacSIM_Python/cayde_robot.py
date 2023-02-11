@@ -58,30 +58,27 @@ import omni.physics.tensors
 def add_cayde_to_stage(	#Adds a UR5/10 (Cayde) to the stage at the specified prim_path, then wraps it as a CortexRobot, then a MotionCommandedRobot.
 	name: str,
 	prim_path: str,
-	Config_Dir: str,
-	usd_path: Optional[str] = None,
+	usd_path: str,
+	urdf_path: str,
+	lula_robot_description_path: str,
+	rmpflow_config_path: str,
+	end_effector_name: str,
 	position: Optional[Sequence[float]] = None,
 	orientation: Optional[Sequence[float]] = None,
 ):
-	if usd_path is None:
-		# Use the default USD
-		usd_path = Config_Dir + "UR10.usd"
-	else:
-		# Use provided USD
-		usd_path = Config_Dir + usd_path
-	
+
 	RMPFlow = RmpFlow(
-		robot_description_path = (Config_Dir + "Cayde_description.yaml"),
-		urdf_path = (Config_Dir + "Cayde.urdf"),
-		rmpflow_config_path = (Config_Dir + "Cayde_rmpflow_config.yaml"),
-		end_effector_frame_name = "tool0",
+		robot_description_path = lula_robot_description_path,
+		urdf_path = urdf_path,
+		rmpflow_config_path = rmpflow_config_path,
+		end_effector_frame_name = end_effector_name,
 		maximum_substep_size = .0034
 	)
-	print(usd_path)
-	print("-----------------------------------------------")
+	
+
 	add_reference_to_stage(usd_path=usd_path, prim_path=prim_path)
-	CR = CortexRobot("ur10", (prim_path + "/ur10"))
-	MCR = MotionCommandedRobot("ur10", prim_path + "/ur10", RMPFlow)
+	CR = CortexRobot(name, prim_path)
+	MCR = MotionCommandedRobot(name, prim_path, RMPFlow)
 	
 	return MCR
 

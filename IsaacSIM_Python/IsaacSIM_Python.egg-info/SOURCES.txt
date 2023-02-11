@@ -1,3 +1,4 @@
+README.md
 setup.py
 IsaacSIM_Python/__init__.py
 IsaacSIM_Python/cayde_robot.py
