@@ -1,0 +1,6 @@
+<launch>
+	
+	<node name="isaac_ur5_connector" pkg="isaac_ur5_connector" type="isaac_ur5_connector.py" respawn="false" output="screen">
+	</node>
+
+</launch>

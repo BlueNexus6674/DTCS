@@ -1,0 +1,2 @@
+isaac_moveit_connector:isaac_ur5_connector
+-DCATKIN_DEVEL_PREFIX=/home/cayde/Documents/CaydeRepo/Master_ROS_Workspace/connector_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/cayde/Documents/CaydeRepo/Master_ROS_Workspace/connector_workspace/install -G Unix Makefiles
