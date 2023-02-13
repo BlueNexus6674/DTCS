@@ -67,6 +67,9 @@ def add_cayde_to_stage(	#Adds a UR5/10 (Cayde) to the stage at the specified pri
 	orientation: Optional[Sequence[float]] = None,
 ):
 
+	if position is None:
+		position = np.zeros(3)
+
 	RMPFlow = RmpFlow(
 		robot_description_path = lula_robot_description_path,
 		urdf_path = urdf_path,
@@ -79,6 +82,9 @@ def add_cayde_to_stage(	#Adds a UR5/10 (Cayde) to the stage at the specified pri
 	add_reference_to_stage(usd_path=usd_path, prim_path=prim_path)
 	CR = CortexRobot(name, prim_path)
 	MCR = MotionCommandedRobot(name, prim_path, RMPFlow)
+	
+	#CR = CortexRobot(name, prim_path, position)
+	#MCR = MotionCommandedRobot(name, prim_path, RMPFlow, position)
 	
 	return MCR
 

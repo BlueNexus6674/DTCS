@@ -1,5 +1,9 @@
 #!/bin/bash
 #----- Isaac Cortex -----#
+Cortex_Cayde_FullStack_PeckGame () {
+	$IsaacPythonPath ${CaydeRepoPath}/Cayde/Cayde_FullStack.py --behavior=${CaydeRepoPath}/Cayde/behaviors/peck.py
+}
+
 Cortex_Cayde_PeckStateMachine () {
 	$IsaacPythonPath ${CaydeRepoPath}/Cayde/Cayde.py --behavior=${CaydeRepoPath}/Cayde/behaviors/peck_state_machine.py
 }

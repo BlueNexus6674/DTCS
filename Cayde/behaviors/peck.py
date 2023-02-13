@@ -36,6 +36,8 @@ from omni.isaac.cortex.dfb import DfLift, DfCloseGripper, make_go_home
 import omni.isaac.cortex.math_util as math_util
 from omni.isaac.cortex.motion_commander import MotionCommand, ApproachParams, PosePq
 
+import omni.ext
+import omni.graph.core as og
 
 class PeckContext(DfLogicalState):
     def __init__(self, robot):
@@ -77,13 +79,13 @@ class PeckContext(DfLogicalState):
             block_p, _ = block.get_local_pose()
             block_positions.append(block_p)
         return block_positions
-
+    	
     def monitor_block_movement(self):
         block_positions = self.get_latest_block_positions()
         for i in range(len(block_positions)):
             if np.linalg.norm(block_positions[i] - self.block_positions[i]) > 0.01:
-                self.block_positions[i] = block_positions[i]
-                self.active_block = self.blocks[i]
+                self.block_positions[i+1] = block_positions[i+1]
+                self.active_block = self.blocks[i+1]
 
     def monitor_active_target_p(self):
         if self.active_block is not None:

@@ -26,18 +26,20 @@ Menu_Run () {
 Menu_Cortex () {
 	echo ""
 	echo "----- Isaac Cortex (SA) Menu -----"
-	echo "1: Cayde (peck_state_machine)"
-	echo "2: Cayde (peck_game)"
-	echo "3: Franka (peck_state_machine)"
-	echo "4: Franka (peck_game)"
+	echo "1: Cayde (FullStack, peck_game)"
+	echo "2: Cayde (peck_state_machine)"
+	echo "3: Cayde (peck_game)"
+	echo "4: Franka (peck_state_machine)"
+	echo "5: Franka (peck_game)"
 	echo ""
 	
 	while true; do read -p "Select Option: " select
 		case $select in
-			1) Cortex_Cayde_PeckStateMachine; break;;
-			2) Cortex_Cayde_PeckGame; break;;
-			3) Cortex_Franka_PeckStateMachine; break;;
-			4) Cortex_Franka_PeckGame; break;;
+			1) Cortex_Cayde_FullStack_PeckGame; break;;
+			2) Cortex_Cayde_PeckStateMachine; break;;
+			3) Cortex_Cayde_PeckGame; break;;
+			4) Cortex_Franka_PeckStateMachine; break;;
+			5) Cortex_Franka_PeckGame; break;;
 			[Xx]* ) break;;
 			* ) echo ${WAM};;
 		esac

@@ -7,13 +7,14 @@ CaydeRepoPath=~/Documents/CaydeRepo
 
 #Sources That May Not Exist
 source /opt/ros/noetic/setup.bash
-source ${CaydeRepoPath}/Master_ROS_Workspace/ros_worksapce/setup.bash
-source ${CaydeRepoPath}/Master_ROS_Workspace/connector_worksapce/setup.bash
-source ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_worksapce/setup.bash
-source ${CaydeRepoPath}/Master_ROS_Workspace/moveit_worksapce/setup.bash
+source /home/cayde/Documents/ros_workspace/devel/setup.bash
+#source ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash
+#source ${CaydeRepoPath}/Master_ROS_Workspace/connector_workspace/devel/setup.bash
+#source ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace/devel/setup.bash
+#source ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace/devel/setup.bash
 
 
-clear
+#clear
 
 # Source Functions
 source ${CaydeRepoPath}/CaydeLauncher/Functions/Menu_Functions.bash
