@@ -9,8 +9,8 @@ Purposefully empty, is setup using the CaydeLauncher.
 
 ## dev_ros_workspace
 Contains
-- `isaac_moveit_connector`.
-- `isaac_action_connector`.
+- `isaac_ur5_connector`.
+- `isaac_moveit_connector` - this works but causes stuttering due to it being inherently blocking. 
 
 ## ros2_workspace
 Currently unused.
