@@ -42,7 +42,7 @@ do
 		echo ""
 		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
 		DestinationLauncherPath="~/.local/share/applications/CaydeLauncher.desktop"
-		cp $CaydeLauncherPath $DestinationLauncherPath
+		cp $CaydeRepoLauncherPath $DestinationLauncherPath
 	fi
 	
 	if [ $option -eq  2 ]
@@ -60,7 +60,7 @@ do
 		echo ""
 		CaydeRepoLauncherPath=${CaydeRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
 		DestinationLauncherPath="~/.local/share/applications/CaydeLauncher.desktop"
-		cp $CaydeLauncherPath $DestinationLauncherPath
+		cp $CaydeRepoLauncherPath $DestinationLauncherPath
 	fi
 	
 	
