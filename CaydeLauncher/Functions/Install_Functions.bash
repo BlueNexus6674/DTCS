@@ -6,9 +6,9 @@ Install_CaydeLauncher () {
 	echo ""
 	echo "Installing CaydeLauncher"
 	echo ""
-	CaydeRepoLauncherPath=${DTCSRepoPath}/CaydeLauncher/Config/CaydeLauncher.desktop
+	DTCSRepoLauncherPath=${DTCSRepoPath}/CaydeLauncher/Config/CaydeLauncher.desktop
 	DestinationLauncherPath=~/.local/share/applications/CaydeLauncher.desktop
-	cp $CaydeRepoLauncherPath $DestinationLauncherPath
+	cp $DTCSRepoLauncherPath $DestinationLauncherPath
 }
 
 Install_Test () {
