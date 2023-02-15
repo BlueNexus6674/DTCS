@@ -26,34 +26,6 @@ Install_Linux_Config () {
 	sudo apt update && sudo apt upgrade
 	
 	echo "${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
-	#cd ~/Documents/CaydeRepo
-	#echo "HelpMe" >> ~/.bashrc
-	
-
-	#Work Folders
-	#mkdir -p CustomIsaacRepo
-	#mkdir -p IsaacSimURDF
-
-	#Catkin workspace creation
-	#mkdir -p ros_workspace/src
-	#mkdir -p ros2_workspace/src
-	#mkdir -p customrobot_workspace/src
-	#mkdir -p moveit_workspace/src/ur5_with_rg2_moveit_configuration
-
-	#Source workspaces in all terminals
-	#nano ~/.bashrc
-	
-	#Add the following at the end for ROS
-	#source /opt/ros/noetic/setup.bash
-	#source ~/Documents/ros_workspace/devel/setup.bash
-	#source ~/Documents/customrobot_workspace/devel/setup.bash
-	#source ~/Documents/moveit_workspace/devel/setup.bash
-
-	#Add the following at the end for ROS2
-	#source /opt/ros/foxy/setup.bash
-	#source ~/Documents/ros2_workspace/install/setup.bash
-	#source ~/Documents/customrobot_workspace/install/setup.bash
-	#source ~/Documents/moveit_workspace/install/setup.bash
 }
 
 Install_ROS_Noetic () {
@@ -230,12 +202,21 @@ Install_connector_workspace_ROS () {
 
 	echo ""
 	echo "connector_workspace"
-	echo "Unused"
-	#cd ${DTCSRepoPath}/ROS_Workspaces/connector_workspace
-	#rosdep install -i --from-path src --rosdistro noetic -y
-	#catkin_make
-	#source ${DTCSRepoPath}/ROS_Workspaces/connector_workspace/devel/setup.bash 
-	#echo "source ${DTCSRepoPath}/ROS_Workspaces/connector_workspace/devel/setup.bash" >> ~/.bashrc
+	cp -R ${DTCSRepoPath}/ROS_Workspaces/dev_ros_workspace/src/* ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src
+	cd ros_workspace/src
+	
+	#Source ROS
+	source /opt/ros/noetic/setup.bash
+	 
+	#Resolve dependencies
+	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace
+	rosdep install -i --from-path src --rosdistro noetic -y
+
+	#Build ros_Workspace
+	catkin_make
+	 
+	#Source ros_workspace
+	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
 }
 
 Install_customrobot_workspace_ROS () {
@@ -254,9 +235,11 @@ Install_moveit_workspace_ROS () {
 	echo ""
 	echo "moveit_workspace"
 	echo ""
+	source ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash 
 	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace
 	rosdep install -i --from-path src --rosdistro noetic -y
 	catkin_make
+	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
 	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash 
 	#echo "source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash" >> ~/.bashrc
 }

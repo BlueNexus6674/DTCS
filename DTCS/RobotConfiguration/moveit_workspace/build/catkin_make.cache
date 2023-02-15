@@ -1,2 +1,0 @@
-ur5_with_rg2_moveit_configuration/ur5_moveit_config
--DCATKIN_DEVEL_PREFIX=/home/cayde/Documents/moveit_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/cayde/Documents/moveit_workspace/install -G Unix Makefiles

@@ -116,7 +116,7 @@ Menu_Install () {
 	echo "8: Install ROS2 (Foxy) Isaac SIM Workspace"
 	echo "9: Install IsaacSIM Gym Env"
 	echo "10: Install IsaacSIM_Python (Add-On)"
-	echo "80: Install connector_workspace ROS (Catkin_Make and Source)"
+	echo "80: Install connector ROS package (Catkin_Make and Source)"
 	echo "81: Install customrobot_workspace ROS (Catkin_Make and Source)"
 	echo "82: Install moveit_workspace ROS (Catkin_Make and Source) "
 	echo "98: Install ROS Control"

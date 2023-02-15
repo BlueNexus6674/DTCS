@@ -1,2 +1,0 @@
-300_isaac_moveit_connector:300_isaac_ur5_connector
--DCATKIN_DEVEL_PREFIX=/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install -G Unix Makefiles
