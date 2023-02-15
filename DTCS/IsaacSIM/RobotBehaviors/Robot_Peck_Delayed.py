@@ -46,6 +46,7 @@ class PeckContext(DfLogicalState):
 
         self.monitors = [
             PeckContext.monitor_block_movement,
+            #PeckContext.monitor_control_block_movement,
             PeckContext.monitor_active_target_p,
             PeckContext.monitor_active_block,
             PeckContext.monitor_eff_block_proximity,
@@ -54,16 +55,28 @@ class PeckContext(DfLogicalState):
 
     def reset(self):
         self.blocks = []
+        self.controlblocks = []
+        self.simblocks = []
         for _, block in self.robot.registered_obstacles.items():
             self.blocks.append(block)
-
-        self.block_positions = self.get_latest_block_positions()
+            if ((_.rsplit("_")[0]) == "Control"):
+                self.controlblocks.append(block)
+                
+            if ((_.rsplit("_")[0]) == "Sim"):
+                self.simblocks.append(block)
+                
+        self.control_block_positions = self.get_latest_control_block_positions()
+        self.sim_block_positions = self.get_latest_sim_block_positions()
+        
         self.active_block = None
         self.active_target_p = None
         self.is_eff_close_to_inactive_block = None
 
         self.timer = None
+        self.timerwait = 5 #5 1
         self.time_at_last_diagnostics_print = None
+        
+        self.peckheight = 0.05
 
     @property
     def has_active_block(self):
@@ -72,28 +85,41 @@ class PeckContext(DfLogicalState):
     def clear_active_block(self):
         self.active_block = None
         self.active_target_p = None
-
-    def get_latest_block_positions(self):
+        
+    def get_latest_control_block_positions(self):
         block_positions = []
-        for block in self.blocks:
+        for block in self.controlblocks:
             #block_p, _ = block.get_world_pose()
             block_p, _ = block.get_local_pose()
             block_positions.append(block_p)
         return block_positions
-    	
+        
+    def get_latest_sim_block_positions(self):
+        block_positions = []
+        for block in self.simblocks:
+            #block_p, _ = block.get_world_pose()
+            block_p, _ = block.get_local_pose()
+            block_positions.append(block_p)
+        return block_positions
+                
     def monitor_block_movement(self):
-        block_positions = self.get_latest_block_positions()
-        for i in range(len(block_positions)):
-            if np.linalg.norm(block_positions[i] - self.block_positions[i]) > 0.01:
-                self.block_positions[i+1] = block_positions[i+1]
-                self.active_block = self.blocks[i+1]
+        control_block_positions = self.get_latest_control_block_positions()
+        sim_block_positions = self.get_latest_sim_block_positions()
+        
+        for i in range(len(sim_block_positions)):
+            if np.linalg.norm(sim_block_positions[i] - self.sim_block_positions[i]) > 0.01:
+                self.sim_block_positions[i] = sim_block_positions[i]
+        
+        for i in range(len(control_block_positions)):
+            if np.linalg.norm(control_block_positions[i] - self.control_block_positions[i]) > 0.01:
+                self.control_block_positions[i] = control_block_positions[i]
+                self.active_block = self.simblocks[i]
 
     def monitor_active_target_p(self):
         if self.active_block is not None:
             #p, _ = self.active_block.get_world_pose()
             p, _ = self.active_block.get_local_pose()
-            #self.active_target_p = p + np.array([0.0, 0.0, 0.0325])
-            self.active_target_p = p + np.array([0.0, 0.0, 0.05])
+            self.active_target_p = p + np.array([0.0, 0.0, self.peckheight])
 
     def monitor_active_block(self):
         if self.active_target_p is not None:
@@ -102,20 +128,21 @@ class PeckContext(DfLogicalState):
             if np.linalg.norm(eff_p - self.active_target_p) < 0.01:
                 now = time.time()
                 
-                if self.timer is None or ((now - self.timer) >= 10.0):
+                if self.timer is None or ((now - self.timer) >= self.timerwait):
                     if self.timer is not None:
                         if self.active_block is not None:
-                            print("Removing Active block:", self.active_block.name)
+                            print("")
+                            print("--- Time(" + str(now)[6:13] + "): Peck Timer Finished")
+                            print("--- Time(" + str(now)[6:13] + "): Removing Active Block:", self.active_block.name)
+                            print("")
                             self.clear_active_block()
                             self.timer = None
                     else:
-                        print("Timer Started")
+                        print("")
+                        print("--- Time(" + str(now)[6:13] + "): Peck Timer Started")
+                        print("")
                         self.timer = now
-                    
-            
-            
-                
-
+   
     def monitor_eff_block_proximity(self):
         self.is_eff_close_to_inactive_block = False
 
@@ -130,9 +157,12 @@ class PeckContext(DfLogicalState):
 
     def monitor_diagnostics(self):
         now = time.time()
-        if self.time_at_last_diagnostics_print is None or (now - self.time_at_last_diagnostics_print) >= 1.0:
+        if self.time_at_last_diagnostics_print is None or (now - self.time_at_last_diagnostics_print) >= 0.5:
             if self.active_block is not None:
-                print("active block:", self.active_block.name)
+                if self.timer is not None:
+                	print("--- Time(" + str(now)[6:13] + "): Active Block: " + self.active_block.name + ", Timer Remaining: " + str(self.timerwait - (now - self.timer))[0:3])
+                else:
+                       print("--- Time(" + str(now)[6:13] + "): Active Block: " + self.active_block.name)
             self.time_at_last_diagnostics_print = now
 
 
