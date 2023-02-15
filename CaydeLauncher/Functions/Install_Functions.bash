@@ -203,7 +203,6 @@ Install_connector_workspace_ROS () {
 	echo ""
 	echo "connector_workspace"
 	cp -R ${DTCSRepoPath}/ROS_Workspaces/dev_ros_workspace/src/* ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src
-	cd ros_workspace/src
 	
 	#Source ROS
 	source /opt/ros/noetic/setup.bash
