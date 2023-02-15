@@ -3,27 +3,22 @@
 #Paths
 IsaacPath=~/.local/share/ov/pkg/isaac_sim-2022.2.0
 IsaacPythonPath=~/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
-CaydeRepoPath=~/Documents/CaydeRepo
+DTCSRepoPath=~/Documents/DTCS
 
 #Sources That May Not Exist
 source /opt/ros/noetic/setup.bash
-source /home/cayde/Documents/ros_workspace/devel/setup.bash
-#source ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash
-#source ${CaydeRepoPath}/Master_ROS_Workspace/connector_workspace/devel/setup.bash
-#source ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace/devel/setup.bash
-#source ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace/devel/setup.bash
-
+source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
 
 #clear
 
 # Source Functions
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Menu_Functions.bash
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Run_Functions.bash
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Cortex_Functions.bash
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Gym_Functions.bash
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Folder_Functions.bash
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Utility_Functions.bash
-source ${CaydeRepoPath}/CaydeLauncher/Functions/Install_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Menu_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Run_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Cortex_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Gym_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Folder_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Utility_Functions.bash
+source ${DTCSRepoPath}/CaydeLauncher/Functions/Install_Functions.bash
 
 #Wrong Answer Message
 WAM="Invalid Answer, Please Try Again"

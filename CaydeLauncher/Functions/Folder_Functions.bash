@@ -17,9 +17,9 @@ Folder_OmniIsaacGymEnv () {
 }
 
 Folder_CaydeBehaviour () {
-	nautilus ${CaydeRepoPath}/Cayde/
+	nautilus ${DTCSRepoPath}/DTCS/
 }
 
 Folder_IsaacSIM_Python () {
-	nautilus ${CaydeRepoPath}/IsaacSIM_Python/
+	nautilus ${DTCSRepoPath}/IsaacSIM_Python/
 }

@@ -9,7 +9,7 @@ Run_UR_ROS_Driver () {
 	
 	RobotType=ur5
 	RobotIP=192.168.56.101
-	KinConfig=${CaydeRepoPath}/IRL_Cayde_Kin_Config.yaml
+	KinConfig=${DTCSRepoPath}/IRL_Cayde_Kin_Config.yaml
 	
 	echo "Settings:"
 	echo "<robot_type>: $RobotType"

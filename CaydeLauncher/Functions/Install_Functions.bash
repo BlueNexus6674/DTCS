@@ -6,7 +6,7 @@ Install_CaydeLauncher () {
 	echo ""
 	echo "Installing CaydeLauncher"
 	echo ""
-	CaydeRepoLauncherPath=${CaydeRepoPath}/CaydeLauncher/Config/CaydeLauncher.desktop
+	CaydeRepoLauncherPath=${DTCSRepoPath}/CaydeLauncher/Config/CaydeLauncher.desktop
 	DestinationLauncherPath=~/.local/share/applications/CaydeLauncher.desktop
 	cp $CaydeRepoLauncherPath $DestinationLauncherPath
 }
@@ -25,7 +25,7 @@ Install_Linux_Config () {
 	echo ""
 	sudo apt update && sudo apt upgrade
 	
-	echo "${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash" >> ~/.bashrc
+	echo "${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
 	#cd ~/Documents/CaydeRepo
 	#echo "HelpMe" >> ~/.bashrc
 	
@@ -134,7 +134,7 @@ Install_UR_ROS_Noetic_Driver () {
 	source /opt/ros/noetic/setup.bash
 	 
 	#Move to Catkin Workspace
-	cd ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/src
+	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src
 
 	#Clone the Driver
 	git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git Universal_Robots_ROS_Driver
@@ -143,7 +143,7 @@ Install_UR_ROS_Noetic_Driver () {
 	git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git universal_robot
 		 
 	#Install Dependencies
-	cd ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace
+	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace
 	sudo apt update -qq
 	rosdep update
 	rosdep install --from-paths src --ignore-src -y
@@ -152,7 +152,7 @@ Install_UR_ROS_Noetic_Driver () {
 	catkin_make
 	 
 	#Source ROS_Workspace
-	source ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash 
+	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash 
 }
 
 Install_UR_ROS2_Foxy_Driver () {
@@ -168,21 +168,21 @@ Install_IsaacSIM_ROS_Noetic_Workspace () {
 	echo ""
 	#Instructions from https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_ros.html
 	 
-	#Move IsaacSIM Workspace from Isaac Sim Install to /CaydeRepoPath/Master_ROS_Workspace/ros_workspace/src
-	cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace/src/* ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/src/
+	#Move IsaacSIM Workspace from Isaac Sim Install to /DTCSRepoPath/ROS_Workspaces/ros_workspace/src
+	cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace/src/* ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src/
 	
 	#Source ROS
 	source /opt/ros/noetic/setup.bash
 	 
 	#Resolve dependencies
-	cd ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace
+	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace
 	rosdep install -i --from-path src --rosdistro noetic -y
 
 	#Build ros_Workspace
 	catkin_make
 	 
 	#Source ros_workspace
-	source ${CaydeRepoPath}/Master_ROS_Workspace/ros_workspace/devel/setup.bash 
+	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash 
 }
 
 Install_IsaacSIM_ROS2_Foxy_Workspace () {
@@ -191,8 +191,8 @@ Install_IsaacSIM_ROS2_Foxy_Workspace () {
 	echo ""
 	#Instructions from https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_ros.html
 	 
-	#Move Isaac SIM Workspace2 from Isaac Sim Install to ~/CaydeRepoPath/Master_ROS2_Workspace/ros2_workspace/src
-	cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace2/src/* ${CaydeRepoPath}/Master_ROS2_Workspace/ros2_workspace/src/
+	#Move Isaac SIM Workspace2 from Isaac Sim Install to ~/DTCSRepoPath/ROS_Workspaces/ros2_workspace/src
+	cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace2/src/* ${DTCSRepoPath}/ROS_Workspaces/ros2_workspace/src/
 	 
 	#Source ROS
 	source /opt/ros/foxy/setup.bash
@@ -205,7 +205,7 @@ Install_IsaacSIM_ROS2_Foxy_Workspace () {
 	colcon build
 	 
 	#Source ros2_workspace
-	source ${CaydeRepoPath}/Master_ROS2_Workspace/ros2_workspace/install/setup.bash 
+	source ${DTCSRepoPath}/ROS_Workspaces/ros2_workspace/install/setup.bash 
 }
 
 Install_IsaacSIM_Gym_Env () {
@@ -222,7 +222,7 @@ Install_IsaacSIM_Python () {
 	echo ""
 	echo "IsaacSIM_Python (Add-on) Install"
 	echo ""
-	cd ${CaydeRepoPath}/IsaacSIM_Python
+	cd ${DTCSRepoPath}/IsaacSIM_Python
 	$IsaacPythonPath -m pip install -e .
 }
 
@@ -230,12 +230,12 @@ Install_connector_workspace_ROS () {
 
 	echo ""
 	echo "connector_workspace"
-	echo ""
-	cd ${CaydeRepoPath}/Master_ROS_Workspace/connector_workspace
-	rosdep install -i --from-path src --rosdistro noetic -y
-	catkin_make
-	source ${CaydeRepoPath}/Master_ROS_Workspace/connector_workspace/devel/setup.bash 
-	echo "source ${CaydeRepoPath}/Master_ROS_Workspace/connector_workspace/devel/setup.bash" >> ~/.bashrc
+	echo "Unused"
+	#cd ${DTCSRepoPath}/ROS_Workspaces/connector_workspace
+	#rosdep install -i --from-path src --rosdistro noetic -y
+	#catkin_make
+	#source ${DTCSRepoPath}/ROS_Workspaces/connector_workspace/devel/setup.bash 
+	#echo "source ${DTCSRepoPath}/ROS_Workspaces/connector_workspace/devel/setup.bash" >> ~/.bashrc
 }
 
 Install_customrobot_workspace_ROS () {
@@ -243,22 +243,22 @@ Install_customrobot_workspace_ROS () {
 	echo ""
 	echo "customrobot_workspace"
 	echo ""
-	cd ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace
+	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace
 	rosdep install -i --from-path src --rosdistro noetic -y
 	catkin_make
-	source ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace/devel/setup.bash 
-	echo "source  ${CaydeRepoPath}/Master_ROS_Workspace/customrobot_workspace/devel/setup.bash" >> ~/.bashrc
+	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash 
+	#echo "source  ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash" >> ~/.bashrc
 }
 
 Install_moveit_workspace_ROS () {
 	echo ""
 	echo "moveit_workspace"
 	echo ""
-	cd ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace
+	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace
 	rosdep install -i --from-path src --rosdistro noetic -y
 	catkin_make
-	source ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace/devel/setup.bash 
-	echo "source ${CaydeRepoPath}/Master_ROS_Workspace/moveit_workspace/devel/setup.bash" >> ~/.bashrc
+	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash 
+	#echo "source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash" >> ~/.bashrc
 }
 
 Install_ROS_Control () {

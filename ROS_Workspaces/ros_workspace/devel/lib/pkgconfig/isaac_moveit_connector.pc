@@ -1,0 +1,8 @@
+prefix=/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/devel
+
+Name: isaac_moveit_connector
+Description: Description of isaac_moveit_connector
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
