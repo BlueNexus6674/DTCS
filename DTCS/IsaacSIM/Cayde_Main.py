@@ -70,11 +70,11 @@ def main():
 	
 	#Control Prim
 	control_prim = XFormPrim(prim_path="/World/Control")
-	control_prim.set_world_pose(position=np.array([0.5, 1.5, 0.0]))
+	control_prim.set_world_pose(position=np.array([0.4, 1.5, 0.0]))
 	
 	#Add Real
 	real_prim = XFormPrim(prim_path="/World/Real")
-	real_prim.set_world_pose(position=np.array([-1, 0.0, 0.0]))
+	real_prim.set_world_pose(position=np.array([-1.05, -0.1, 0.0]))
 	
 	add_reference_to_stage(usd_path=USD_Path_table, prim_path="/World/Real/Table")
 	real_table_prim = XFormPrim(prim_path="/World/Real/Table")
@@ -98,7 +98,7 @@ def main():
 	
 	#Add Sim
 	sim_prim = XFormPrim(prim_path="/World/Sim")
-	sim_prim.set_world_pose(position=np.array([1.5, 0.0, 0.0]))
+	sim_prim.set_world_pose(position=np.array([1.45, -0.1, 0.0]))
 	
 	add_reference_to_stage(usd_path=USD_Path_table, prim_path="/World/Sim/Table")
 	sim_table_prim = XFormPrim(prim_path="/World/Sim/Table")
