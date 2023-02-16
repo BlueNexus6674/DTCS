@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Paths
-UserName=cayde
+UserName=${USER}
 IsaacPath=/home/${UserName}/.local/share/ov/pkg/isaac_sim-2022.2.0
 IsaacPythonPath=/home/${UserName}/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
 DTCSRepoPath=/home/${UserName}/Documents/DTCS
