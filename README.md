@@ -36,6 +36,8 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 
 ## To Do:
 - Add auto username changer
+- Open isaac sim install
+- Auto install
 
 ## Install Instructions:
 
