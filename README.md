@@ -39,8 +39,8 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 - Open isaac sim install
 - Auto install
 
-## Install Instructions:
-
+# Install and Config Instructions:
+## Install:
 1. Download CaydeSetupScript.bash and place in ```~/Documents```
 
 2. Make executable and launch CaydeSetupScript.bash
@@ -62,9 +62,9 @@ chmod u+x CaydeSetupScript.bash
 
 8. Select ```Install Enviroment Menu```
 
-9. Install Enviroment Menu options as needed
+9. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
 
-## Config
+## Config:
 1. Open `CaydeLauncher.bash` in `~/Documents/DTCS/CaydeLauncher`
 
 2. Edit `UserName` variable on line 4 as appropriate.
