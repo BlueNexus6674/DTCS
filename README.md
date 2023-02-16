@@ -33,8 +33,8 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 </p>
 
 
-
-I AM Cayde
+## To Do:
+- Add auto username changer
 
 ## Install Instructions:
 
