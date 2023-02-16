@@ -65,6 +65,7 @@ chmod u+x CaydeSetupScript.bash
 9. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
 
 ## Config:
+Redundant instructions, NO CONFIG NEEDED.
 1. Open `CaydeLauncher.bash` in `~/Documents/DTCS/CaydeLauncher`
 
 2. Edit `UserName` variable on line 4 as appropriate.
