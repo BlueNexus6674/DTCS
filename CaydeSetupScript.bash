@@ -2,11 +2,13 @@
 #My Script
 clear
 
-GitClonePath=https://github.com/BlueNexus6674/Cayde_ROS_Isaac.git
-DTCSRepoPath=~/Documents/DTCS/
+UserName=cayde
 
-DTCSLauncherPath=${DTCSRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
-DestinationLauncherPath="~/.local/share/applications/CaydeLauncher.desktop"
+GitClonePath=https://github.com/BlueNexus6674/DTCS.git
+DTCSRepoPath=/home/${UserName}/Documents/DTCS/
+
+DTCSRepoLauncherPath=${DTCSRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
+DestinationLauncherPath="/home/${UserName}/.local/share/applications/CaydeLauncher.desktop"
 
 ecode=0
 while [ $ecode -eq 0 ]
@@ -35,6 +37,7 @@ do
 
 	if [ $option -eq  1 ]
 	then
+		sudo apt-get install git
 		echo ""
 		echo "Step: Cloning Repo"
 		echo ""
@@ -48,6 +51,7 @@ do
 	
 	if [ $option -eq  2 ]
 	then
+		sudo apt-get install git
 		echo ""
 		echo "Step: Cloning Repo"
 		echo ""
@@ -74,4 +78,3 @@ do
 	echo ""
 
 done
-
