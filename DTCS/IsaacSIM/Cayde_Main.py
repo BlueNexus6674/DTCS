@@ -5,6 +5,7 @@ simulation_app = SimulationApp({"headless": False})
 #----- General Imports -----
 import numpy as np
 import argparse
+import os
 
 #----- IsaacSIM_Python Imports -----
 from IsaacSIM_Python.cayde_robot import add_cayde_to_stage
@@ -37,7 +38,7 @@ class CubeSpec:
 
 def main():
 	#Dirs
-	UserName = "cayde"
+	UserName = os.getlogin()
 	Base_Dir = "/home/" + UserName + "/Documents/DTCS/DTCS/"
 	Behaviour_Config_Dir = Base_Dir + "/IsaacSIM/RobotBehaviours/"
 	Robot_Config_Dir = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_RobotDescription/"
