@@ -30,24 +30,15 @@ from omni.isaac.core_nodes.scripts.utils import set_target_prims
 from omni.isaac.core.utils.extensions import enable_extension
 enable_extension("omni.isaac.ros_bridge")
 
-
-
-
-
-
 class CubeSpec:
 	def __init__(self, name, color):
 		self.name = name
 		self.color = np.array(color)
 
-
-
-
-
-
 def main():
 	#Dirs
-	Base_Dir = "/home/cayde/Documents/DTCS/DTCS/"
+	UserName = "cayde"
+	Base_Dir = "/home/" + UserName + "/Documents/DTCS/DTCS/"
 	Behaviour_Config_Dir = Base_Dir + "/IsaacSIM/RobotBehaviours/"
 	Robot_Config_Dir = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_RobotDescription/"
 	USD_Path_ur5withrg2 = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_URDF/USD/ur5withrg2/ur5withrg2.usd"
