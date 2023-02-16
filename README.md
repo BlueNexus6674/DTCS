@@ -56,11 +56,15 @@ chmod u+x CaydeSetupScript.bash
 
 5. Optionally delete CaydeSetupScript.bash
 
-6. Open CaydeLauncher
+6. Open `CaydeLauncher.bash` in `~/Documents/DTCS/CaydeLauncher`
 
-7. Select ```Install Enviroment Menu```
+7. Edit `UserName` variable on line 4 as appropriate.
 
-8. Install Enviroment Menu options as needed
+8. Open CaydeLauncher
+
+9. Select ```Install Enviroment Menu```
+
+10. Install Enviroment Menu options as needed
 
 ## Extra Config
 -a
