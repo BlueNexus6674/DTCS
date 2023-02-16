@@ -56,20 +56,22 @@ chmod u+x CaydeSetupScript.bash
 
 5. Optionally delete CaydeSetupScript.bash
 
-6. Open `CaydeLauncher.bash` in `~/Documents/DTCS/CaydeLauncher`
+6. Complete Config
 
-7. Edit `UserName` variable on line 4 as appropriate.
+7. Open CaydeLauncher
 
-8. Open CaydeLauncher
+8. Select ```Install Enviroment Menu```
 
-9. Select ```Install Enviroment Menu```
+9. Install Enviroment Menu options as needed
 
-10. Install Enviroment Menu options as needed
+## Config
+1. Open `CaydeLauncher.bash` in `~/Documents/DTCS/CaydeLauncher`
 
-## Extra Config
--a
--a
--a
+2. Edit `UserName` variable on line 4 as appropriate.
+
+3. Open `Cayde_Main.py` in `~/Documents/DTCS/DTCS/IsaacSIM/`
+
+4. Edit `UserName` variable on line 40 as appropriate.
 
 
 
