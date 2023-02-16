@@ -1,9 +1,10 @@
 #!/bin/bash
 
 #Paths
+UserName=cayde
 IsaacPath=~/.local/share/ov/pkg/isaac_sim-2022.2.0
 IsaacPythonPath=~/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
-DTCSRepoPath=~/Documents/DTCS
+DTCSRepoPath=/home/${UserName}/Documents/DTCS
 
 #Sources That May Not Exist
 source /opt/ros/noetic/setup.bash
