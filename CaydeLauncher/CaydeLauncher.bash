@@ -2,8 +2,8 @@
 
 #Paths
 UserName=cayde
-IsaacPath=~/.local/share/ov/pkg/isaac_sim-2022.2.0
-IsaacPythonPath=~/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
+IsaacPath=/home/${UserName}/.local/share/ov/pkg/isaac_sim-2022.2.0
+IsaacPythonPath=/home/${UserName}/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
 DTCSRepoPath=/home/${UserName}/Documents/DTCS
 
 #Sources That May Not Exist
