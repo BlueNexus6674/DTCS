@@ -81,7 +81,7 @@ Install_IsaacSIM () {
 	echo "- Install 'Cache' through Omniverse App Image"
 	echo "- Install 'Nucleous' through Omniverse App Image"
 	echo "- Install IsaacSIM through Omniverse App Image"
-	echo "- Open IsaacSIM"
+	echo "- OPEN IsaacSIM (this finishes the install process) "
 	echo ""
 	echo "Download Location: https://www.nvidia.com/en-us/omniverse/download/"
 	echo ""
