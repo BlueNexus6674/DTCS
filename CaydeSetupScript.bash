@@ -37,14 +37,30 @@ do
 
 	if [ $option -eq  1 ]
 	then
+		#Step 1/3
 		sudo apt-get install git
 		echo ""
-		echo "Step: Cloning Repo"
+		echo "Step 1/3: Cloning Repo"
 		echo ""
 		git clone $GitClonePath $CaydeRepoPath
 		
+		#Step 2/3
 		echo ""
-		echo "Step: Installing CaydeLauncher"
+		echo "Step 2/3: Adding USER parameters to desktop file"
+		echo ""
+		#Write File
+		echo "[Desktop Entry]" > $DTCSRepoLauncherPath
+		echo "Version=1.0" >> $DTCSRepoLauncherPath
+		echo "Type=Application" >> $DTCSRepoLauncherPath
+		echo "Terminal=true" >> $DTCSRepoLauncherPath
+		echo 'Exec="/home/${USER}/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"' >> $DTCSRepoLauncherPath
+		echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
+		echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
+		echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
+		
+		#Step 3/3
+		echo ""
+		echo "Step 3/3: Installing CaydeLauncher"
 		echo ""
 		cp $DTCSRepoLauncherPath $DestinationLauncherPath
 	fi
