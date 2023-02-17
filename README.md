@@ -45,7 +45,7 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 ```bash
 cd ~/Documents
 wget https://raw.githubusercontent.com/BlueNexus6674/DTCS/main/CaydeSetupScript.bash
-chmod u+x CaydeSetupScript.bash
+sudo chmod u+x CaydeSetupScript.bash
 ~/Documents/CaydeSetupScript.bash
 ```
 
