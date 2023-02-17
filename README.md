@@ -41,38 +41,24 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 
 # Install and Config Instructions:
 ## Install:
-1. Download CaydeSetupScript.bash and place in ```~/Documents```
-
-2. Make executable and launch CaydeSetupScript.bash
+1. Download, make executable, and run CaydeSetupScript.bash
 ```bash
 cd ~/Documents
+wget https://raw.githubusercontent.com/BlueNexus6674/DTCS/main/CaydeSetupScript.bash
 chmod u+x CaydeSetupScript.bash
 ~/Documents/CaydeSetupScript.bash
 ```
 
-3. Select ```Auto-Install```
+2. Select ```Auto-Install```
 
-4. Add CaydeLauncher to Favourites from AppDrawer
+3. Add CaydeLauncher to Favourites from AppDrawer
 
-5. Optionally delete CaydeSetupScript.bash
+4. Optionally delete CaydeSetupScript.bash
 
-6. Complete Config
+5. Open CaydeLauncher
 
-7. Open CaydeLauncher
+6. Select ```Install Enviroment Menu```
 
-8. Select ```Install Enviroment Menu```
+7. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
 
-9. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
-
-## Config:
-Redundant instructions, NO CONFIG NEEDED.
-1. Open `CaydeLauncher.bash` in `~/Documents/DTCS/CaydeLauncher`
-
-2. Edit `UserName` variable on line 4 as appropriate.
-
-3. Open `Cayde_Main.py` in `~/Documents/DTCS/DTCS/IsaacSIM/`
-
-4. Edit `UserName` variable on line 40 as appropriate.
-
-
-
+It's recommended to install and launch IsaacSIM at least once before using this repository. 
