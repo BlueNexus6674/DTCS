@@ -29,7 +29,7 @@ do
 		1) option=1; break;;
 		2) option=2; break;;
 		3) option=3; break;;
-		[Xx]* ) ecode=1; echo "Exiting..."; break;;
+		[Xx]* ) option=0; ecode=1; echo "Exiting..."; break;;
 		* ) echo "Please answer a correct answer.";;
 	    esac
 	done
@@ -49,11 +49,12 @@ do
 		echo "Step 2/3: Adding USER parameters to desktop file"
 		echo ""
 		#Write File
+		ExecInfo='Exec="/home/'${USER}'/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"'
 		echo "[Desktop Entry]" > $DTCSRepoLauncherPath
 		echo "Version=1.0" >> $DTCSRepoLauncherPath
 		echo "Type=Application" >> $DTCSRepoLauncherPath
 		echo "Terminal=true" >> $DTCSRepoLauncherPath
-		echo 'Exec="/home/${USER}/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"' >> $DTCSRepoLauncherPath
+		echo $ExecInfo >> $DTCSRepoLauncherPath
 		echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
 		echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
 		echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
@@ -76,6 +77,18 @@ do
 	
 	if [ $option -eq  3 ]
 	then
+		#Write File
+		ExecInfo='Exec="/home/'${USER}'/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"'
+		echo "[Desktop Entry]" > $DTCSRepoLauncherPath
+		echo "Version=1.0" >> $DTCSRepoLauncherPath
+		echo "Type=Application" >> $DTCSRepoLauncherPath
+		echo "Terminal=true" >> $DTCSRepoLauncherPath
+		echo $ExecInfo >> $DTCSRepoLauncherPath
+		echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
+		echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
+		echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
+		
+		#Install
 		echo ""
 		echo "Step: Installing CaydeLauncher"
 		echo ""
