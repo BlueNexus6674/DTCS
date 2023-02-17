@@ -1,262 +1,155 @@
 #!/bin/bash
 
-#----- Install Functions -----#
+Menu_Run () {
+	echo ""
+	echo "----- Run Menu -----"
+	echo "1: roscore"
+	echo "2: UR ROS Driver"
+	echo "3: UR ROS2 Driver"
+	echo "4: ROS Isaac Action Connector"
+	echo "5: ROS Isaac Moveit Connector"
+	echo ""
 	
-Install_CaydeLauncher () {
-	echo ""
-	echo "Installing CaydeLauncher"
-	echo ""
-	DTCSRepoLauncherPath=${DTCSRepoPath}/CaydeLauncher/Config/CaydeLauncher.desktop
-	DestinationLauncherPath=/home/${UserName}/.local/share/applications/CaydeLauncher.desktop
-	cp $DTCSRepoLauncherPath $DestinationLauncherPath
+	while true; do read -p "Select Option: " select
+		case $select in
+			1) Run_roscore; break;;
+			2) Run_UR_ROS_Driver; break;;
+			3) Run_UR_ROS2_Driver; break;;
+			4) Run_ROS_Isaac_Action_Connector; break;;
+			5) Run_ROS_Isaac_Moveit_Connector; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
 }
 
-Install_Test () {
+Menu_Cortex () {
 	echo ""
-	echo "Installing Test"
-	echo "Installing Test"
-	echo "Installing Test"
+	echo "----- Isaac Cortex (SA) Menu -----"
+	echo "1: Cayde (Main, RobotPeckDelayed, SIM Bridge Disabled)"
+	echo "2: Cayde (Main, RobotPeckDelayed, SIM Bridge Enabled)"
+	echo "3: Cayde (Follow_Example)"
+	echo "4: Franka (peck_state_machine)"
+	echo "5: Franka (peck_game)"
 	echo ""
-}
-
-Install_Linux_Config () {
-	echo ""
-	echo "Config Linux (Updating)"
-	echo ""
-	sudo apt update
-	sudo apt upgrade -y
 	
-	echo "${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
+	while true; do read -p "Select Option: " select
+		case $select in
+			1) Cortex_Cayde_Main_RobotPeckDelayed_BridgeDisabled; break;;
+			2) Cortex_Cayde_Main_RobotPeckDelayed_BridgeEnabled; break;;
+			3) Cortex_Cayde_FollowExample; break;;
+			4) Cortex_Franka_PeckStateMachine; break;;
+			5) Cortex_Franka_PeckGame; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
 }
 
-Install_ROS_Noetic () {
+Menu_Gym () {
 	echo ""
-	echo "ROS Noetic Install"
+	echo "----- Isaac Gym Menu -----"
+	echo "1: Cartpole"
+	echo "2: Quadcopter"
 	echo ""
-	sudo apt update && sudo apt upgrade
-	#Instructions from http://wiki.ros.org/noetic/Installation/Ubuntu
-	 
-	#Setup your source list
-	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-	 
-	#Set up your keys
-	sudo apt -y install curl
-	curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-
-	#Update Package Index
-	sudo apt update
-
-	#Installation
-	sudo apt -y install ros-noetic-desktop-full
-	 
-	#Source ROS
-	source /opt/ros/noetic/setup.bash
-	echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-
-	#Dependencies for building packages
-	sudo apt -y install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-
-	#Initialize rosdep
-	sudo apt -y install python3-rosdep
-	sudo rosdep init
-	rosdep update
-}
-
-Install_ROS2_Foxy () {
-	echo ""
-	echo "ROS2 Foxy Install"
-	echo ""
-	#Instructions from https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
-
-	sudo apt update
-	sudo apt upgrade -y
-
-	#Setup sources
-	sudo apt -y install software-properties-common
-	sudo add-apt-repository universe
-	 
-	#Add ROS2 GPG Key
-	sudo apt update
-	sudo apt -y install curl
-	sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-	 
-	#Add repository to sources list
-	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-	 
-	#Install ROS2 packages
-	sudo apt update
-	sudo apt upgrade -y
-	sudo apt -y install ros-foxy-desktop python3-argcomplete
-
-	#Source setup script
-	#source /opt/ros/foxy/setup.bash
-	#echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 	
-	#For rosdep install command
-	sudo apt -y install ros-dev-tools
-	 
-	#For colcon build command
-	sudo apt -y install python3-colcon-common-extensions
+	while true; do read -p "Select Option: " select
+		case $select in
+			1) Gym_Cartpole; break;;
+			2) Gym_Quadcopter; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
 }
 
-Install_UR_ROS_Noetic_Driver () {
+Menu_Folder () {
 	echo ""
-	echo "Universal_Robots_ROS-Driver (Noetic) Install"
+	echo "----- Folder Menu -----"
+	echo "1: Extension Examples (User Examples)"
+	echo "2: Standalone Examples (User Examples)"
+	echo "3: Motion Policy Configs (no longer needed)"
+	echo "4: OmniIsaacGymEnv"
+	echo "5: Cayde (behaviour)"
+	echo "6: IsaacSIM_Python"
 	echo ""
-	#Instructions from https://github.com/UniversalRobots/Universal_Robots_ROS_Driver
-	 
-	#Source ROS Noetic
-	source /opt/ros/noetic/setup.bash
-	 
-	#Move to Catkin Workspace
-	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src
-
-	#Clone the Driver
-	git clone https://github.com/UniversalRobots/Universal_Robots_ROS_Driver.git Universal_Robots_ROS_Driver
-
-	#Clone the UR Description (At the time of writing,the melodic-devel branch must be used)
-	git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git universal_robot
-		 
-	#Install Dependencies
-	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace
-	sudo apt update -qq
-	rosdep update
-	rosdep install --from-paths src --ignore-src -y
-	 
-	#Build ROS_Workspace
-	catkin_make
-	 
-	#Source ROS_Workspace
-	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash 
-}
-
-Install_UR_ROS2_Foxy_Driver () {
-	echo ""
-	echo "Universal_Robots_ROS2-Driver (Foxy) WIP Install"
-	echo "Currently not working..."
-	echo ""
-}
-
-Install_IsaacSIM_ROS_Noetic_Workspace () {
-	echo ""
-	echo "Isaac SIM Workspace (Noetic) Install Install"
-	echo ""
-	#Instructions from https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_ros.html
-	 
-	#Move IsaacSIM Workspace from Isaac Sim Install to /DTCSRepoPath/ROS_Workspaces/ros_workspace/src
-	cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace/src/* ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src/
 	
-	#Source ROS
-	source /opt/ros/noetic/setup.bash
-	 
-	#Resolve dependencies
-	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace
-	rosdep install -i --from-path src --rosdistro noetic -y
-
-	#Build ros_Workspace
-	catkin_make
-	 
-	#Source ros_workspace
-	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash 
+	while true; do read -p "Select Option: " select
+		case $select in
+			1) Folder_Ext; break;;
+			2) Folder_SA; break;;
+			3) Folder_MPC; break;;
+			4) Folder_OmniIsaacGymEnv; break;;
+			5) Folder_CaydeBehaviour; break;;
+			6) Folder_IsaacSIM_Python; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
 }
 
-Install_IsaacSIM_ROS2_Foxy_Workspace () {
+Menu_Utility () {
 	echo ""
-	echo "Isaac SIM Workspace (Foxy) Install Install"
+	echo "----- Util Menu -----"
+	echo "1: This Menu Is Currently Unused"
 	echo ""
-	#Instructions from https://docs.omniverse.nvidia.com/app_isaacsim/app_isaacsim/install_ros.html
-	 
-	#Move Isaac SIM Workspace2 from Isaac Sim Install to ~/DTCSRepoPath/ROS_Workspaces/ros2_workspace/src
-	cp -R ~/.local/share/ov/pkg/isaac_sim-2022.2.0/ros_workspace2/src/* ${DTCSRepoPath}/ROS_Workspaces/ros2_workspace/src/
-	 
-	#Source ROS
-	source /opt/ros/foxy/setup.bash
-	 
-	#Resolve dependencies
-	cd ~/Documents/ros2_workspace
-	rosdep install -i --from-path src --rosdistro foxy -y
-
-	#Build ros2_workspace
-	colcon build
-	 
-	#Source ros2_workspace
-	source ${DTCSRepoPath}/ROS_Workspaces/ros2_workspace/install/setup.bash 
-}
-
-Install_IsaacSIM_Gym_Env () {
-	echo ""
-	echo "IsaacSIM_Gym_Env Install"
-	echo ""
-	cd /home/${UserName}/
-	git clone https://github.com/NVIDIA-Omniverse/OmniIsaacGymEnvs.git
-	cd /home/${UserName}/OmniIsaacGymEnvs/
-	$IsaacPythonPath -m pip install -e .
-}
-
-Install_IsaacSIM_Python () {
-	echo ""
-	echo "IsaacSIM_Python (Add-on) Install"
-	echo ""
-	cd ${DTCSRepoPath}/IsaacSIM_Python
-	$IsaacPythonPath -m pip install -e .
-}
-
-Install_connector_workspace_ROS () {
-
-	echo ""
-	echo "connector_workspace"
-	cp -R ${DTCSRepoPath}/ROS_Workspaces/dev_ros_workspace/src/* ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/src
 	
-	#Source ROS
-	source /opt/ros/noetic/setup.bash
-	 
-	#Resolve dependencies
-	cd ${DTCSRepoPath}/ROS_Workspaces/ros_workspace
-	rosdep install -i --from-path src --rosdistro noetic -y
-
-	#Build ros_Workspace
-	catkin_make
-	 
-	#Source ros_workspace
-	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
+	while true; do read -p "Select Option: " select
+		case $select in
+			1) echo ""; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
 }
 
-Install_customrobot_workspace_ROS () {
-
+Menu_Install () {
 	echo ""
-	echo "customrobot_workspace"
+	echo "----- Install Enviroment Menu -----"
+	echo "0: Auto-Install"
+	echo "1: Install CaydeLauncher"
+	echo "2: Linux Setup"
+	echo "3: Install ROS Noetic"
+	echo "4: Install ROS2 Foxy"
+	echo "5: Install UR ROS Driver"
+	echo "6: Install UR ROS2 Driver"
+	echo "7: Install ROS (Noetic) Isaac SIM Workspace"
+	echo "8: Install ROS2 (Foxy) Isaac SIM Workspace"
+	echo "9: Install IsaacSIM Gym Env"
+	echo "10: Install IsaacSIM_Python (Add-On)"
+	echo "80: Install connector ROS package (Catkin_Make and Source)"
+	echo "81: Install customrobot_workspace ROS (Catkin_Make and Source)"
+	echo "82: Install moveit_workspace ROS (Catkin_Make and Source) "
+	echo "98: Install ROS Control"
+	echo "99: Install MoveIT"
 	echo ""
-	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace
-	rosdep install -i --from-path src --rosdistro noetic -y
-	catkin_make
-	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash 
-	#echo "source  ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash" >> ~/.bashrc
+	echo ""
+	echo ""
+	echo "Please only enter option 7 or 8 after installing the Omniverse AppImage provided by Nvidia, and then installing and launching IsaacSIM at least once"
+	echo ""
+	echo ""
+	echo ""
+	
+	while true; do read -p "Select Option: " select
+		case $select in
+			0) Install_Auto_Main_ROS_Menu; break;;
+			1) Install_CaydeLauncher; break;;
+			2) Install_Linux_Config; break;;
+			3) Install_ROS_Noetic; break;;
+			4) Install_ROS2_Foxy; break;;
+			5) Install_UR_ROS_Noetic_Driver; break;;
+			6) Install_UR_ROS2_Foxy_Driver; break;;
+			7) Install_IsaacSIM_ROS_Noetic_Workspace; break;;
+			8) Install_IsaacSIM_ROS2_Foxy_Workspace; break;;
+			9) Install_IsaacSIM_Gym_Env; break;;
+			10) Install_IsaacSIM_Python; break;;
+			80) Install_connector_workspace_ROS; break;;
+			81) Install_customrobot_workspace_ROS; break;;
+			82) Install_moveit_workspace_ROS; break;;
+			98) Install_ROS_Control; break;;
+			99) Install_ROS_Moveit; break;;
+			[Xx]*) break;;
+			* ) echo ${WAM};;
+		esac
+	done
 }
-
-Install_moveit_workspace_ROS () {
-	echo ""
-	echo "moveit_workspace"
-	echo ""
-	source ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash 
-	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace
-	rosdep install -i --from-path src --rosdistro noetic -y
-	catkin_make
-	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
-	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash 
-	#echo "source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash" >> ~/.bashrc
-}
-
-Install_ROS_Control () {
-	echo ""
-	echo "ROS Control Install"
-	echo ""
-	sudo apt-get -y install ros-noetic-ros-control ros-noetic-ros-controllers
-}
-
-Install_ROS_Moveit () {
-	echo ""
-	echo "ROS Moveit Install"
-	echo ""
-	sudo apt -y install ros-noetic-moveit
-}
-
