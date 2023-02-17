@@ -122,12 +122,12 @@ Menu_Install () {
 	echo "82: Install moveit_workspace ROS (Catkin_Make and Source) "
 	echo "98: Install ROS Control"
 	echo "99: Install MoveIT"
-	%echo ""
-	%echo ""
-	%echo ""
-	%echo "Please only enter option 7 or 8 after installing the Omniverse AppImage provided by Nvidia, and then installing and launching IsaacSIM at least once"
-	%echo ""
-	%echo ""
+	#echo ""
+	#echo ""
+	#echo ""
+	#echo "Please only enter option 7 or 8 after installing the Omniverse AppImage provided by Nvidia, and then installing and launching IsaacSIM at least once"
+	#echo ""
+	#echo ""
 	echo ""
 	
 	while true; do read -p "Select Option: " select
