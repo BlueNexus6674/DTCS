@@ -106,6 +106,7 @@ Menu_Utility () {
 Menu_Install () {
 	echo ""
 	echo "----- Install Enviroment Menu -----"
+	echo "0: Auto-Install"
 	echo "1: Install CaydeLauncher"
 	echo "2: Linux Setup"
 	echo "3: Install ROS Noetic"
@@ -131,6 +132,7 @@ Menu_Install () {
 	
 	while true; do read -p "Select Option: " select
 		case $select in
+			0) Install_Auto_Main_ROS_Menu; break;;
 			1) Install_CaydeLauncher; break;;
 			2) Install_Linux_Config; break;;
 			3) Install_ROS_Noetic; break;;
