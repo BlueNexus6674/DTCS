@@ -2,7 +2,7 @@
 #My Script
 clear
 
-UserName=cayde
+UserName=${USER}
 
 GitClonePath=https://github.com/BlueNexus6674/DTCS.git
 DTCSRepoPath=/home/${UserName}/Documents/DTCS/
