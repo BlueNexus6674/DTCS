@@ -27,8 +27,8 @@ Install_Auto_Main_ROS_Menu (){
 	echo ""
 	
 	echo "Options:"
-	echo "1: Continue with Auto-Install"
-	echo "2: Install IsaacSIM"
+	echo "1: Install IsaacSIM"
+	echo "2: Continue with Auto-Install"
 	echo "X: Quit"
 	
 	while true; do read -p "Select Option: " select
