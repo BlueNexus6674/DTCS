@@ -51,14 +51,16 @@ sudo chmod u+x CaydeSetupScript.bash
 
 2. Select ```Auto-Install```
 
-3. Add CaydeLauncher to Favourites from AppDrawer
+3. Post-install, restart.
 
-4. Optionally delete CaydeSetupScript.bash
+4. Add CaydeLauncher to Favourites from AppDrawer
 
-5. Open CaydeLauncher
+5. Optionally delete CaydeSetupScript.bash 
 
-6. Select ```Install Enviroment Menu```
+6. Open CaydeLauncher
 
-7. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
+7. Select ```Install Enviroment Menu```
+
+8. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
 
 It's recommended to install and launch IsaacSIM at least once before using this repository. 
