@@ -75,6 +75,9 @@ def main():
 	real_robot_prim = XFormPrim(prim_path="/World/Real/RobotCell")
 	real_robot_prim.set_local_pose(np.array([0.24, 0.11, 0.92]))
 	
+	sim_robot_prim = XFormPrim(prim_path="/World/Real/RobotCell/Obstacle")
+	sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
+	
 	real_MCR = add_cayde_to_stage(
 		name = "ur5withrg2_real",
 		prim_path = "/World/Real/RobotCell/ur5withrg2",
@@ -98,6 +101,9 @@ def main():
 	
 	sim_robot_prim = XFormPrim(prim_path="/World/Sim/RobotCell")
 	sim_robot_prim.set_local_pose(np.array([0.24, 0.11, 0.92]))
+	
+	sim_robot_prim = XFormPrim(prim_path="/World/Sim/RobotCell/Obstacle")
+	sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
 	
 	sim_MCR = add_cayde_to_stage(
 		name = "ur5withrg2_sim",
@@ -131,27 +137,30 @@ def main():
 				translation=np.array([x, 0, width / 2]),
 			)
 		)
+		sim_robot.register_obstacle(control_obj)
 		
+		
+		
+	for i, (x, spec) in enumerate(zip(np.linspace(-0.85, -0.25, len(obs_specs)), obs_specs)):
 		real_obj = world.scene.add(
 			DynamicCuboid(
-				prim_path="/World/Real/RobotCell/{}".format(spec.name),
+				prim_path="/World/Real/RobotCell/Obstacle/{}".format(spec.name),
 				name=spec.name,
 				size=width,
 				color=spec.color,
-				translation=np.array([x, 0.35, width / 2]),
+				translation=np.array([x, 0.40, width / 2]),
 			)
 		)
 		
 		sim_obj = world.scene.add(
 			DynamicCuboid(
-				prim_path="/World/Sim/RobotCell/{}".format(spec.name),
+				prim_path="/World/Sim/RobotCell/Obstacle/{}".format(spec.name),
 				name="Sim_{}".format(spec.name),
 				size=width,
 				color=spec.color,
-				translation=np.array([x, 0.35, width / 2]),
+				translation=np.array([x, 0.40, width / 2]),
 			)
 		)
-		sim_robot.register_obstacle(control_obj)
 		sim_robot.register_obstacle(sim_obj)
 	
 	#Load Cortex Behaviour

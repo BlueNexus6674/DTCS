@@ -119,7 +119,7 @@ class PeckContext(DfLogicalState):
         if self.active_block is not None:
             #p, _ = self.active_block.get_world_pose()
             p, _ = self.active_block.get_local_pose()
-            self.active_target_p = p + np.array([0.0, 0.0, self.peckheight])
+            self.active_target_p = p + np.array([0.35, -0.11, self.peckheight]) #[0.35, -0.11, 0] offset is due to Obstacle prim being offset so that 0, 0 is the back left corner of the table
 
     def monitor_active_block(self):
         if self.active_target_p is not None:
