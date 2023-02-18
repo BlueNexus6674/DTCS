@@ -59,7 +59,6 @@ Install_Auto_Main_ROS () {
 	Install_ROS_Moveit
 	
 	# Isaac SIM
-	Install_IsaacSIM
 	Install_IsaacSIM_ROS_Noetic_Workspace
 	Install_IsaacSIM_Gym_Env
 	Install_IsaacSIM_Python
