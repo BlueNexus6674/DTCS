@@ -1,6 +1,5 @@
-# Cayde_ROS_Isaac
-IsaacSIM_Python
+# IsaacSIM_Python
 
-run setup.py
+Contains the `IsaacSIM_Python` IsaacSIM Python add-on that can be installed through CaydeLauncher.
 
-I AM Cayde
+`cayde_robot.py` provides the facilities to add 'unsupported' robots and RmpFlows in IsaacSIM.
