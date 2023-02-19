@@ -36,9 +36,6 @@ from omni.isaac.cortex.dfb import DfLift, DfCloseGripper, make_go_home
 import omni.isaac.cortex.math_util as math_util
 from omni.isaac.cortex.motion_commander import MotionCommand, ApproachParams, PosePq
 
-import omni.ext
-import omni.graph.core as og
-
 class PeckContext(DfLogicalState):
     def __init__(self, robot):
         super().__init__()
