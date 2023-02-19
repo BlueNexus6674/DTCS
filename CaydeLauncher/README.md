@@ -1,10 +1,8 @@
-# Cayde_ROS_Isaac
-CaydeLauncher
+# CaydeLauncher
 
-run CaydeLauncher.bash
+This folder contains the scripts for the CaydeLauncher utility.
 
-Option 6
+- `CaydeLauncher.bash` is the main script for the launcher.
+- The `Config` folder contains the `.desktop` and `CaydeLauncher.png` needed to create a shortcut for the launcher.
+- The `Functions` fodler contains the scripts that control the features of the launcher.
 
-Option 1
-
-I AM Cayde
