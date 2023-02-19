@@ -1,23 +1,20 @@
 # DTCS
 ## Description
 Functions:
-- Provides a launcher (CaydeLauncher) to automate tasks
-  - Running common ROS features
-  - Running Isaac SIM Standalone Applications (commonly Cortex / Gym)
-  - Launching complex folders
-  - Utility Menu
-  - General Install Menu:
+- Provides a launcher (CaydeLauncher) to automize:
+  - Running (Executing) common ROS commands.
+  - Launching Isaac SIM Standalone Applications (commonly Cortex / Gym).
+  - Opening obscure folders.
+  - Installing the dev environment (such as ROS, ROS2, IsaacSIM, etc).
 - IsaacSIM_Python
-  - Adds a custom cayde_robot.py that makes it easy to add custom robots and control them with custom RMPFlows
-  - Makes it easy to add custom .py scripts to Isaac SIM Python
-- Cayde
+  - Adds cayde_robot.py, a purpose-built script that makes it easy to add custom robots in IsaacSIM.
+- DTCS
   - Folder of behaviours and descriptions for a UR5 nicknamed Cayde
-- ROS / ROS2 Master Workspaces allowing for easy organisation and seperation of scripts
+- ROS/ROS2 Master Workspaces. Contains dev and active workspaces.
 
-Currently only compatible with Ubuntu 20.04, support provided for:
+Currently only compatible with Ubuntu 20.04, support is provided for:
 - Isaac SIM 2022.2
 - ROS Noetic
-- ROS2 Foxy
 
 Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster University for the dissertation titled:
 
@@ -32,12 +29,6 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 <p align="center">
  <img src="https://user-images.githubusercontent.com/65248566/218261000-a43e2090-6c92-48e2-840b-360386d21f69.png" />
 </p>
-
-
-## To Do:
-- Add auto username changer
-- Open isaac sim install
-- Auto install
 
 # Install and Config Instructions:
 ## Install:
