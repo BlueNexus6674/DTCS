@@ -12,6 +12,7 @@ simulation_app = SimulationApp({"headless": False})
 
 #----- General Imports -----
 import numpy as np
+import os
 from omni.isaac.core.objects import VisualSphere
 from omni.isaac.cortex.cortex_world import CortexWorld
 from omni.isaac.cortex.df import DfNetwork, DfState, DfStateMachineDecider
@@ -58,11 +59,15 @@ class FollowState(DfState):
 
 def main():
 	#Dirs
-	Base_Dir = "/home/cayde/Documents/DTCS/DTCS/"
-	Behaviour_Config_Dir = Base_Dir + "/IsaacSIM/RobotBehaviours/"
-	Robot_Config_Dir = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_RobotDescription/"
-	USD_Path_ur5withrg2 = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_URDF/USD/ur5withrg2/ur5withrg2.usd"
-	USD_Path_table = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_URDF/USD/assem_table/assem_table.usd"
+	UserName = os.getlogin()
+	
+	Base_Dir = "/home/" + UserName + "/Documents/DTCS/"
+	
+	Behaviour_Config_Dir = Base_Dir + "DTCS/IsaacSIM/RobotBehaviours/"
+	Robot_Config_Dir = Base_Dir + "DTCS/RobotConfiguration/"
+	
+	USD_Path_ur5withrg2 = Base_Dir + "/ROS_Workspaces/ros_workspace/src/ur5withrg2/USD/ur5withrg2/ur5withrg2.usd"
+	USD_Path_table = Base_Dir + "Assets/USD/assem_table/assem_table.usd"
 	
 	world = CortexWorld()
 
@@ -86,7 +91,7 @@ def main():
 		usd_path = USD_Path_ur5withrg2,
 		urdf_path = Robot_Config_Dir + "ur5withrg2.urdf",
 		lula_robot_description_path = Robot_Config_Dir + "ur5withrg2_lula_description.yaml",
-		rmpflow_config_path = Robot_Config_Dir + "Cayde_rmpflow_config.yaml",
+		rmpflow_config_path = Robot_Config_Dir + "ur5withrg2_rmpflow_config.yaml",
 		end_effector_name = "RG2tool0",
 	)
 	real_robot = world.scene.add(Robot(name="ur5withrg2_real", prim_path="/World/Real/RobotCell/ur5withrg2"))
@@ -108,7 +113,7 @@ def main():
 		usd_path = USD_Path_ur5withrg2,
 		urdf_path = Robot_Config_Dir + "ur5withrg2.urdf",
 		lula_robot_description_path = Robot_Config_Dir + "ur5withrg2_lula_description.yaml",
-		rmpflow_config_path = Robot_Config_Dir + "Cayde_rmpflow_config.yaml",
+		rmpflow_config_path = Robot_Config_Dir + "ur5withrg2_rmpflow_config.yaml",
 		end_effector_name = "RG2tool0",
 	)
 	robot = world.add_robot(sim_MCR)

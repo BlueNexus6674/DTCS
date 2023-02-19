@@ -5,6 +5,7 @@ simulation_app = SimulationApp({"headless": False})
 #----- General Imports -----
 import numpy as np
 import argparse
+import os
 
 #----- IsaacSIM_Python Imports -----
 from IsaacSIM_Python.cayde_robot import add_cayde_to_stage
@@ -32,10 +33,14 @@ enable_extension("omni.isaac.ros_bridge")
 
 def main():
 	#Dirs
-	Base_Dir = "/home/cayde/Documents/DTCS/DTCS/"
-	Behaviour_Config_Dir = Base_Dir + "/IsaacSIM/RobotBehaviours/"
-	Robot_Config_Dir = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_RobotDescription/"
-	USD_Path_ur5withrg2 = Base_Dir + "RobotConfiguration/IsaacSIM/IsaacSIM_URDF/USD/ur5withrg2/ur5withrg2.usd"
+	UserName = os.getlogin()
+	
+	Base_Dir = "/home/" + UserName + "/Documents/DTCS/"
+	
+	Behaviour_Config_Dir = Base_Dir + "DTCS/IsaacSIM/RobotBehaviours/"
+	Robot_Config_Dir = Base_Dir + "DTCS/RobotConfiguration/"
+	
+	USD_Path_ur5withrg2 = Base_Dir + "/ROS_Workspaces/ros_workspace/src/ur5withrg2/USD/ur5withrg2/ur5withrg2.usd"
 
 	#Cayde_FullStack Args
 	ArgsParser = argparse.ArgumentParser()
@@ -63,7 +68,7 @@ def main():
 		usd_path = USD_Path_ur5withrg2,
 		urdf_path = Robot_Config_Dir + "ur5withrg2.urdf",
 		lula_robot_description_path = Robot_Config_Dir + "ur5withrg2_lula_description.yaml",
-		rmpflow_config_path = Robot_Config_Dir + "Cayde_rmpflow_config.yaml",
+		rmpflow_config_path = Robot_Config_Dir + "ur5withrg2_rmpflow_config.yaml",
 		end_effector_name = "RG2tool0",
 	)
 	real_robot = world.scene.add(Robot(name="ur5withrg2_real", prim_path="/World/Real/ur5withrg2"))
@@ -77,7 +82,7 @@ def main():
 		usd_path = USD_Path_ur5withrg2,
 		urdf_path = Robot_Config_Dir + "ur5withrg2.urdf",
 		lula_robot_description_path = Robot_Config_Dir + "ur5withrg2_lula_description.yaml",
-		rmpflow_config_path = Robot_Config_Dir + "Cayde_rmpflow_config.yaml",
+		rmpflow_config_path = Robot_Config_Dir + "ur5withrg2_rmpflow_config.yaml",
 		end_effector_name = "RG2tool0",
 	)
 	sim_robot = world.add_robot(sim_MCR)
