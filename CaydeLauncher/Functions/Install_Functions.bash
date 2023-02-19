@@ -13,16 +13,15 @@ Install_Auto_Main_ROS_Menu (){
 	echo "Method:"
 	echo "- Update System"
 	echo "- Install ROS Noetic"
-	echo "- Install IsaacSIM"
+	echo "- Install UR_ROS_Noetic_Driver into ros_workspace"
+	echo "- Install dev_ros_workspace into ros_workspace (developed by LW)"
+	#echo "- Install moveit_workspace"
+	echo "- Install ROS Control"
+	#echo "- Install ROS moveit"
+	echo "- Install IsaacSIM Features"
 	echo "--- Install Isaac SIM ROS Workspace"
 	echo "--- Install Isaac SIM Gym Environment"
 	echo "--- Install IsaacSIM_Python (add-on, developed by LW)"
-	echo "- Install UR_ROS_Noetic_Driver"
-	echo "- Install connector_workspace (developed by LW)"
-	echo "- Install customrobot_workspace"
-	echo "- Install moveit_workspace"
-	echo "- Install ROS Control"
-	echo "- Install ROS moveit"
 	
 	echo ""
 	
@@ -48,15 +47,14 @@ Install_Auto_Main_ROS () {
 	
 	# ros_workspace
 	Install_UR_ROS_Noetic_Driver
-	Install_connector_workspace_ROS
+	Install_dev_ros_workspace
 	
 	#Other workspaces
-	Install_customrobot_workspace_ROS
-	Install_moveit_workspace_ROS
+	#Install_moveit_workspace_ROS
 	
 	# ROS packages
 	Install_ROS_Control
-	Install_ROS_Moveit
+	#Install_ROS_Moveit
 	
 	# Isaac SIM
 	Install_IsaacSIM_ROS_Noetic_Workspace
@@ -99,11 +97,36 @@ Install_IsaacSIM () {
 
 
 Install_CaydeLauncher () {
+	
 	echo ""
-	echo "Installing CaydeLauncher"
+	echo "----- Installing CaydeLauncher -----"
 	echo ""
-	DTCSRepoLauncherPath=${DTCSRepoPath}/CaydeLauncher/Config/CaydeLauncher.desktop
-	DestinationLauncherPath=/home/${UserName}/.local/share/applications/CaydeLauncher.desktop
+	#Step 1/3
+	sudo apt-get install git
+	echo ""
+	echo "Step 1/3: Cloning Repo"
+	echo ""
+	git clone $GitClonePath $DTCSRepoPath
+	
+	#Step 2/3
+	echo ""
+	echo "Step 2/3: Adding USER parameters to desktop file"
+	echo ""
+	#Write File
+	ExecInfo='Exec="/home/'${USER}'/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"'
+	echo "[Desktop Entry]" > $DTCSRepoLauncherPath
+	echo "Version=1.0" >> $DTCSRepoLauncherPath
+	echo "Type=Application" >> $DTCSRepoLauncherPath
+	echo "Terminal=true" >> $DTCSRepoLauncherPath
+	echo $ExecInfo >> $DTCSRepoLauncherPath
+	echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
+	echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
+	echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
+	
+	#Step 3/3
+	echo ""
+	echo "Step 3/3: Installing CaydeLauncher"
+	echo ""
 	cp $DTCSRepoLauncherPath $DestinationLauncherPath
 }
 
@@ -297,7 +320,7 @@ Install_IsaacSIM_Python () {
 	$IsaacPythonPath -m pip install -e .
 }
 
-Install_connector_workspace_ROS () {
+Install_dev_ros_workspace () {
 
 	echo ""
 	echo "connector_workspace"
@@ -317,29 +340,15 @@ Install_connector_workspace_ROS () {
 	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
 }
 
-Install_customrobot_workspace_ROS () {
-
-	echo ""
-	echo "customrobot_workspace"
-	echo ""
-	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace
-	rosdep install -i --from-path src --rosdistro noetic -y
-	catkin_make
-	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash 
-	#echo "source  ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash" >> ~/.bashrc
-}
-
 Install_moveit_workspace_ROS () {
 	echo ""
 	echo "moveit_workspace"
 	echo ""
-	source ${DTCSRepoPath}/DTCS/RobotConfiguration/customrobot_workspace/devel/setup.bash 
-	cd ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace
+	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
+	cd ${DTCSRepoPath}/ROS_Workspaces/moveit_workspace
 	rosdep install -i --from-path src --rosdistro noetic -y
 	catkin_make
 	source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
-	#source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash 
-	#echo "source ${DTCSRepoPath}/DTCS/RobotConfiguration/moveit_workspace/devel/setup.bash" >> ~/.bashrc
 }
 
 Install_ROS_Control () {

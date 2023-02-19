@@ -4,19 +4,23 @@ Menu_Run () {
 	echo ""
 	echo "----- Run Menu -----"
 	echo "1: roscore"
-	echo "2: UR ROS Driver"
-	echo "3: UR ROS2 Driver"
+	echo "2: UR ROS Driver (No KinConfig)"
+	echo "3: UR ROS Driver (KinConfig)"
 	echo "4: ROS Isaac Action Connector"
-	echo "5: ROS Isaac Moveit Connector"
+	echo "5: IsaacSIM with ros_workspace sourced"
+	echo "98: ROS Isaac Moveit Connector"
+	echo "99: UR ROS2 Driver"
 	echo ""
 	
 	while true; do read -p "Select Option: " select
 		case $select in
 			1) Run_roscore; break;;
-			2) Run_UR_ROS_Driver; break;;
-			3) Run_UR_ROS2_Driver; break;;
+			2) Run_UR_ROS_Driver_NKC; break;;
+			3) Run_UR_ROS_Driver_KC; break;;
 			4) Run_ROS_Isaac_Action_Connector; break;;
-			5) Run_ROS_Isaac_Moveit_Connector; break;;
+			5) Run_Isaac_ROS_Source; break;;
+			98) Run_ROS_Isaac_Moveit_Connector; break;;
+			99) Run_UR_ROS2_Driver; break;;
 			[Xx]* ) break;;
 			* ) echo ${WAM};;
 		esac
@@ -106,48 +110,48 @@ Menu_Utility () {
 Menu_Install () {
 	echo ""
 	echo "----- Install Enviroment Menu -----"
-	echo "0: Auto-Install"
-	echo "1: Install CaydeLauncher"
+	echo "Main Install:"
+	echo "0: Install CaydeLauncher"
+	echo "1: Auto-Install (Completes Main Install)"
 	echo "2: Linux Setup"
 	echo "3: Install ROS Noetic"
-	echo "4: Install ROS2 Foxy"
-	echo "5: Install UR ROS Driver"
-	echo "6: Install UR ROS2 Driver"
-	#echo "7: Install ROS (Noetic) Isaac SIM Workspace"
-	#echo "8: Install ROS2 (Foxy) Isaac SIM Workspace"
+	echo "4: Install UR ROS Driver"
+	echo "5: Install dev_ros_workspace into ros_workspace (Catkin_Make and Source)"
+	echo "6: Install ROS Control"
+	
+	echo ""
+	echo "Isaac SIM:"
+	echo "REQUIRES IsaacSIM to be installed and to have been launched at least once before installing"
+	echo "7: Install ROS (Noetic) Isaac SIM Workspace"
+	echo "8: Install ROS2 (Foxy) Isaac SIM Workspace"
 	echo "9: Install IsaacSIM Gym Env"
 	echo "10: Install IsaacSIM_Python (Add-On)"
-	echo "80: Install connector ROS package (Catkin_Make and Source)"
-	echo "81: Install customrobot_workspace ROS (Catkin_Make and Source)"
-	echo "82: Install moveit_workspace ROS (Catkin_Make and Source) "
-	echo "98: Install ROS Control"
-	echo "99: Install MoveIT"
-	#echo ""
-	#echo ""
-	#echo ""
-	#echo "Please only enter option 7 or 8 after installing the Omniverse AppImage provided by Nvidia, and then installing and launching IsaacSIM at least once"
-	#echo ""
-	#echo ""
+	
+	echo ""
+	echo "MoveIT and WIP:"
+	echo "98: Install MoveIT"
+	echo "99: Install moveit_workspace ROS (Catkin_Make and Source) "
+	echo "998: Install ROS2 Foxy (untested)"
+	echo "999: Install UR ROS2 Driver (not yet implemented)"
 	echo ""
 	
 	while true; do read -p "Select Option: " select
 		case $select in
-			0) Install_Auto_Main_ROS_Menu; break;;
-			1) Install_CaydeLauncher; break;;
+			0) Install_CaydeLauncher; break;;
+			1) Install_Auto_Main_ROS_Menu; break;;
 			2) Install_Linux_Config; break;;
 			3) Install_ROS_Noetic; break;;
-			4) Install_ROS2_Foxy; break;;
-			5) Install_UR_ROS_Noetic_Driver; break;;
-			6) Install_UR_ROS2_Foxy_Driver; break;;
+			4) Install_UR_ROS_Noetic_Driver; break;;
+			5) Install_dev_ros_workspace; break;;
+			6) Install_ROS_Control; break;;
 			7) Install_IsaacSIM_ROS_Noetic_Workspace; break;;
 			8) Install_IsaacSIM_ROS2_Foxy_Workspace; break;;
 			9) Install_IsaacSIM_Gym_Env; break;;
 			10) Install_IsaacSIM_Python; break;;
-			80) Install_connector_workspace_ROS; break;;
-			81) Install_customrobot_workspace_ROS; break;;
-			82) Install_moveit_workspace_ROS; break;;
-			98) Install_ROS_Control; break;;
-			99) Install_ROS_Moveit; break;;
+			98) Install_ROS_Moveit; break;;
+			99) Install_moveit_workspace_ROS; break;;
+			998) Install_ROS2_Foxy; break;;
+			999) Install_UR_ROS2_Foxy_Driver; break;;
 			[Xx]*) break;;
 			* ) echo ${WAM};;
 		esac

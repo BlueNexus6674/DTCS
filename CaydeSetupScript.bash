@@ -5,9 +5,9 @@ clear
 UserName=${USER}
 
 GitClonePath=https://github.com/BlueNexus6674/DTCS.git
-DTCSRepoPath=/home/${UserName}/Documents/DTCS/
+DTCSRepoPath=/home/${UserName}/Documents/DTCS
 
-DTCSRepoLauncherPath=${DTCSRepoPath}"CaydeLauncher/Config/CaydeLauncher.desktop"
+DTCSRepoLauncherPath=${DTCSRepoPath}"/CaydeLauncher/Config/CaydeLauncher.desktop"
 DestinationLauncherPath="/home/${UserName}/.local/share/applications/CaydeLauncher.desktop"
 
 ecode=0
@@ -37,62 +37,17 @@ do
 
 	if [ $option -eq  1 ]
 	then
-		#Step 1/3
-		sudo apt-get install git
-		echo ""
-		echo "Step 1/3: Cloning Repo"
-		echo ""
-		git clone $GitClonePath $CaydeRepoPath
-		
-		#Step 2/3
-		echo ""
-		echo "Step 2/3: Adding USER parameters to desktop file"
-		echo ""
-		#Write File
-		ExecInfo='Exec="/home/'${USER}'/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"'
-		echo "[Desktop Entry]" > $DTCSRepoLauncherPath
-		echo "Version=1.0" >> $DTCSRepoLauncherPath
-		echo "Type=Application" >> $DTCSRepoLauncherPath
-		echo "Terminal=true" >> $DTCSRepoLauncherPath
-		echo $ExecInfo >> $DTCSRepoLauncherPath
-		echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
-		echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
-		echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
-		
-		#Step 3/3
-		echo ""
-		echo "Step 3/3: Installing CaydeLauncher"
-		echo ""
-		cp $DTCSRepoLauncherPath $DestinationLauncherPath
+		Install_CaydeLauncher
 	fi
 	
 	if [ $option -eq  2 ]
 	then
-		sudo apt-get install git
-		echo ""
-		echo "Step: Cloning Repo"
-		echo ""
-		git clone $GitClonePath $CaydeRepoPath
+		Install_Clone_CaydeLauncher
 	fi
 	
 	if [ $option -eq  3 ]
 	then
-		#Write File
-		ExecInfo='Exec="/home/'${USER}'/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"'
-		echo "[Desktop Entry]" > $DTCSRepoLauncherPath
-		echo "Version=1.0" >> $DTCSRepoLauncherPath
-		echo "Type=Application" >> $DTCSRepoLauncherPath
-		echo "Terminal=true" >> $DTCSRepoLauncherPath
-		echo $ExecInfo >> $DTCSRepoLauncherPath
-		echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
-		echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
-		echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
-		
-		#Install
-		echo ""
-		echo "Step: Installing CaydeLauncher"
-		echo ""
-		cp $DTCSRepoLauncherPath $DestinationLauncherPath
+		Install_Install_CaydeLauncher
 	fi
 	
 	
@@ -107,3 +62,48 @@ do
 	echo ""
 
 done
+
+Install_CaydeLauncher () {
+	Install_Clone_CaydeLauncher
+	Install_Install_CaydeLauncher
+}
+
+Install_Clone_CaydeLauncher () {
+	echo ""
+	echo "----- Installing CaydeLauncher -----"
+	echo ""
+	#Step 1/3
+	sudo apt-get install git
+	echo ""
+	echo "Step 1/3: Cloning Repo"
+	echo ""
+	git clone $GitClonePath $DTCSRepoPath
+}
+
+Install_Install_CaydeLauncher () {
+	#Step 2/3
+	echo ""
+	echo "Step 2/3: Adding USER parameters to desktop file"
+	echo ""
+	#Write File
+	ExecInfo='Exec="/home/'${USER}'/Documents/DTCS/CaydeLauncher/CaydeLauncher.bash"'
+	echo "[Desktop Entry]" > $DTCSRepoLauncherPath
+	echo "Version=1.0" >> $DTCSRepoLauncherPath
+	echo "Type=Application" >> $DTCSRepoLauncherPath
+	echo "Terminal=true" >> $DTCSRepoLauncherPath
+	echo $ExecInfo >> $DTCSRepoLauncherPath
+	echo "Name=CaydeLauncher" >> $DTCSRepoLauncherPath
+	echo "Comment=CaydeLauncher" >> $DTCSRepoLauncherPath
+	echo "Icon=/home/${USER}/Documents/DTCS/CaydeLauncher/Config/CaydeLauncher.png" >> $DTCSRepoLauncherPath
+	
+	#Step 3/3
+	echo ""
+	echo "Step 3/3: Installing CaydeLauncher"
+	echo ""
+	cp $DTCSRepoLauncherPath $DestinationLauncherPath
+}
+
+	
+	
+	
+	

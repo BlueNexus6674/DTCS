@@ -6,6 +6,15 @@ IsaacPath=/home/${UserName}/.local/share/ov/pkg/isaac_sim-2022.2.0
 IsaacPythonPath=/home/${UserName}/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
 DTCSRepoPath=/home/${UserName}/Documents/DTCS
 
+GitClonePath=https://github.com/BlueNexus6674/DTCS.git
+DTCSRepoLauncherPath=${DTCSRepoPath}"/CaydeLauncher/Config/CaydeLauncher.desktop"
+DestinationLauncherPath="/home/${UserName}/.local/share/applications/CaydeLauncher.desktop"
+
+#Vars
+RobotType=ur5
+RobotIP=192.168.56.101
+KinConfig=${DTCSRepoPath}/IRL_Cayde_Kin_Config.yaml
+
 #Sources That May Not Exist
 source /opt/ros/noetic/setup.bash
 source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash
