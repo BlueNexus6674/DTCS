@@ -12,7 +12,7 @@ DestinationLauncherPath="/home/${UserName}/.local/share/applications/CaydeLaunch
 
 #Vars
 RobotType=ur5
-RobotIP=192.168.56.101
+RobotIP=192.168.0.100
 KinConfig=${DTCSRepoPath}/IRL_Cayde_Kin_Config.yaml
 
 #Sources That May Not Exist
