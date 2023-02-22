@@ -69,7 +69,7 @@ def main():
 	
 	#Add Real
 	real_prim = XFormPrim(prim_path="/World/Real")
-	real_prim.set_world_pose(position=np.array([-1.05, -0.1, 0.0]))
+	real_prim.set_world_pose(position=np.array([-1.05, 0, 0.0]))
 	
 	add_reference_to_stage(usd_path=USD_Path_table, prim_path="/World/Real/Table")
 	real_table_prim = XFormPrim(prim_path="/World/Real/Table")
@@ -79,7 +79,7 @@ def main():
 	real_robot_prim.set_local_pose(np.array([0.24, 0.11, 0.92]))
 	
 	sim_robot_prim = XFormPrim(prim_path="/World/Real/RobotCell/Obstacle")
-	sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
+	sim_robot_prim.set_local_pose(np.array([0.35, 0, 0]))
 	
 	real_MCR = add_cayde_to_stage(
 		name = "ur5withrg2_real",
@@ -96,7 +96,7 @@ def main():
 	
 	#Add Sim
 	sim_prim = XFormPrim(prim_path="/World/Sim")
-	sim_prim.set_world_pose(position=np.array([1.45, -0.1, 0.0]))
+	sim_prim.set_world_pose(position=np.array([1.45, 0, 0.0]))
 	
 	add_reference_to_stage(usd_path=USD_Path_table, prim_path="/World/Sim/Table")
 	sim_table_prim = XFormPrim(prim_path="/World/Sim/Table")
@@ -106,7 +106,7 @@ def main():
 	sim_robot_prim.set_local_pose(np.array([0.24, 0.11, 0.92]))
 	
 	sim_robot_prim = XFormPrim(prim_path="/World/Sim/RobotCell/Obstacle")
-	sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
+	sim_robot_prim.set_local_pose(np.array([0.35, 0, 0]))
 	
 	sim_MCR = add_cayde_to_stage(
 		name = "ur5withrg2_sim",
