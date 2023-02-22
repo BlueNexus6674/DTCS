@@ -145,7 +145,13 @@ Install_Linux_Config () {
 	sudo apt update
 	sudo apt upgrade -y
 	
-	echo "${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
+	echo "Installing python"
+	sudo apt -y install python3
+	sudo apt -y install python3-pip
+	sudo apt -y install python-is-python3
+	
+	echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+	echo "source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
 }
 
 Install_ROS_Noetic () {
@@ -170,7 +176,7 @@ Install_ROS_Noetic () {
 	 
 	#Source ROS
 	source /opt/ros/noetic/setup.bash
-	echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+	#echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 
 	#Dependencies for building packages
 	sudo apt -y install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
