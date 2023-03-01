@@ -3,8 +3,8 @@
   <arg name="RDV" default="4" doc="Right /dev/videoX" />
   <arg name="ResX" default="640" doc="ResX" />
   <arg name="ResY" default="480" doc="ResY" />
-  <arg name="Calibrated" default="true" doc="If True, use calibration in /config/Live ">
-  <arg name="Show" default="true" doc="If True, launch image viewer nodes">
+  <arg name="Calibrated" default="true" doc="If True, use calibration in /config/Live "/>
+  <arg name="Show" default="true" doc="If True, launch image viewer nodes"/>
   
   <group ns="stereo">
   
@@ -29,9 +29,11 @@
     <param name="camera_info_url" value="file://$(find isaac_ur5_cam)/config/Live/ROSRight.yaml" if="$(arg Calibrated)"/>
     <param name="camera_name" value="right"/>
   </node>
+  
   </group>
   
   <group if="$(arg Show)">
+  
   <node name="image_viewer_1" pkg="image_view" type="image_view" respawn="false" output="screen">
     <remap from="image" to="/stereo/left/image_raw"/>
     <param name="autosize" value="true" />
@@ -41,5 +43,7 @@
     <remap from="image" to="/stereo/right/image_raw"/>
     <param name="autosize" value="true" />
   </node>
+  
   </group>
+  
 </launch>
