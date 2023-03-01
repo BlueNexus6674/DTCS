@@ -1,0 +1,29 @@
+#Base Setup
+UserName: ${USER}
+
+CustomConfig: ${DTCSRepoPath}/CaydeLauncher/Config/CustomConfig.yaml
+
+IsaacPath: /home/${USER}/.local/share/ov/pkg/isaac_sim-2022.2.0
+IsaacPythonPath: /home/${USER}/.local/share/ov/pkg/isaac_sim-2022.2.0/python.sh
+
+GitClonePath: https://github.com/BlueNexus6674/DTCS.git
+DCTSRepoLauncherPath: ${DTCSRepoPath}"/CaydeLauncher/Config/CaydeLauncher.desktop"
+DestinationLauncherPath: "/home/${USER}/.local/share/applications/CaydeLauncher.desktop"
+
+
+#Robot Setup
+RobotType: ur5
+RobotIP: 192.168.0.100
+KinConfig: ${DTCSRepoPath}/IRL_Cayde_Kin_Config.yaml
+
+#Camera Setup
+LeftDevVideo: 3
+RightDevVideo: 5
+ResX: 640
+ResY: 480
+CamZoom: 200
+### ResX ResY pairs: [640, 480] [960, 540] [1920, 1080]
+
+#End Setup
+WAM: "Invalid Answer, Please Try Again"
+ecode: 0

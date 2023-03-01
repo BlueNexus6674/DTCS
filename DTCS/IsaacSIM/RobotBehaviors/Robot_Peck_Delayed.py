@@ -70,10 +70,10 @@ class PeckContext(DfLogicalState):
         self.is_eff_close_to_inactive_block = None
 
         self.timer = None
-        self.timerwait = 5 #5 1
+        self.timerwait = 12 #5 1
         self.time_at_last_diagnostics_print = None
         
-        self.peckheight = 0.05
+        self.peckheight = 0.08
 
     @property
     def has_active_block(self):
@@ -116,7 +116,9 @@ class PeckContext(DfLogicalState):
         if self.active_block is not None:
             #p, _ = self.active_block.get_world_pose()
             p, _ = self.active_block.get_local_pose()
-            self.active_target_p = p + np.array([0.35, -0.11, self.peckheight]) #[0.35, -0.11, 0] offset is due to Obstacle prim being offset so that 0, 0 is the back left corner of the table
+            #self.active_target_p = p + np.array([0.35, -0.11, self.peckheight])
+            self.active_target_p = p + np.array([0.35, -0.11, self.peckheight])
+              #[0.35, -0.11, 0] offset is due to Obstacle prim being offset so that 0, 0 is the back left corner of the table
 
     def monitor_active_block(self):
         if self.active_target_p is not None:

@@ -1,0 +1,30 @@
+<launch>
+  <arg name="LDV" default="2" doc="Left /dev/videoX" />
+  <arg name="RDV" default="4" doc="Right /dev/videoX" />
+  <arg name="ResX" default="640" doc="ResX" />
+  <arg name="ResY" default="480" doc="ResY" />
+  
+  <group ns="stereo">
+  
+  <node name="left" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video$(arg LDV)" />
+    <param name="image_width" value="$(arg ResX)"/>
+    <param name="image_height" value="$(arg ResY)"/>
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam_1" />
+    <param name="io_method" value="mmap"/>
+    <param name="camera_name" value="left"/>
+  </node>
+  
+  <node name="right" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video$(arg RDV)" />
+    <param name="image_width" value="$(arg ResX)" />
+    <param name="image_height" value="$(arg ResY)" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam_2" />
+    <param name="io_method" value="mmap"/>
+    <param name="camera_name" value="right"/>
+  </node>
+  
+  </group>
+</launch>

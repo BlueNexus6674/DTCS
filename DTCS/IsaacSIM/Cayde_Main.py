@@ -79,8 +79,8 @@ def main():
 	real_robot_prim.set_local_pose(np.array([0.24, 0.11, 0.92]))
 	
 	sim_robot_prim = XFormPrim(prim_path="/World/Real/RobotCell/Obstacle")
-	sim_robot_prim.set_local_pose(np.array([0.35, 0, 0]))
-	
+	#sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
+	sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
 	real_MCR = add_cayde_to_stage(
 		name = "ur5withrg2_real",
 		prim_path = "/World/Real/RobotCell/ur5withrg2",
@@ -106,7 +106,7 @@ def main():
 	sim_robot_prim.set_local_pose(np.array([0.24, 0.11, 0.92]))
 	
 	sim_robot_prim = XFormPrim(prim_path="/World/Sim/RobotCell/Obstacle")
-	sim_robot_prim.set_local_pose(np.array([0.35, 0, 0]))
+	sim_robot_prim.set_local_pose(np.array([0.35, -0.11, 0]))
 	
 	sim_MCR = add_cayde_to_stage(
 		name = "ur5withrg2_sim",
@@ -124,9 +124,9 @@ def main():
 	
 	#Add Cubes
 	obs_specs = [
-        CubeSpec("RedCube", [0.7, 0.0, 0.0]),
+        CubeSpec("RedCube", [1.0, 1.0, 1.0]),
         CubeSpec("BlueCube", [0.0, 0.0, 0.7]),
-        CubeSpec("YellowCube", [0.7, 0.7, 0.0]),
+        CubeSpec("YellowCube", [0.8, 0.3, 0.0]),
         CubeSpec("GreenCube", [0.0, 0.7, 0.0]),
 	]
 	width = 0.0515

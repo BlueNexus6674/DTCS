@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="https://ros.org/wiki/xacro">
+
+<xacro:macro name="rg2" params="connected_to">
+
+
+ <!-- Arm-Hand Fixed Joint -->
+  <joint name="ur5_hand_joint" type="fixed">
+    <parent link="${connected_to}"/>
+    <child link="rg2_hand"/>
+    <origin xyz="0 0 0" rpy="1.570796325 -1.570796325 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+
+
+  <!-- Hand Links -->
+  <link name="rg2_hand">
+    <visual name="rg2_hand_visual">
+      <geometry>
+        <mesh filename="package://ur5withrg2/meshes/visual/rg2/hand.dae"/>
+      </geometry>
+    </visual>
+    <collision name="rg2_hand_collision">
+      <geometry>
+        <mesh filename="package://ur5withrg2/meshes/collision/rg2/hand.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="rg2_leftfinger">
+    <visual>
+      <geometry>
+        <mesh filename="package://ur5withrg2/meshes/visual/rg2/finger.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://ur5withrg2/meshes/collision/rg2/finger.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="rg2_rightfinger">
+    <visual>
+      <origin rpy="3.141592653589793 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur5withrg2/meshes/visual/rg2/finger.dae" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="3.141592653589793 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://ur5withrg2/meshes/collision/rg2/finger.stl" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <!-- Finger Joints -->
+  <joint name="rg2_finger_joint1" type="revolute">
+    <parent link="rg2_hand"/>
+    <child link="rg2_leftfinger"/>
+    <origin rpy="0 0 0" xyz="0.105 0.017 0"/>
+    <axis xyz="0 0 1" />
+    <limit effort="10.6" lower="0.0" upper="1.18" velocity="1.57" />
+  </joint>
+
+  <joint name="rg2_finger_joint2" type="revolute">
+    <parent link="rg2_hand" />
+    <child link="rg2_rightfinger" />
+    <origin rpy="0 0 0" xyz="0.105 -0.017 0"/>
+    <axis xyz="0 0 -1" />
+    <limit effort="10.6" lower="0.0" upper="1.18" velocity="1.57" />
+  </joint>
+  
+  <!-- RG2 Tool0-->
+  <link name="RG2tool0"/>
+  <joint name="tool0-RG2tool0" type="fixed">
+    <!-- default toolframe: X+ left, Y+ up, Z+ front -->
+    <origin rpy="0 0 0" xyz="0 0 0.215"/>
+    <parent link="${connected_to}"/>
+    <child link="RG2tool0"/>
+  </joint>
+
+</xacro:macro>
+</robot>

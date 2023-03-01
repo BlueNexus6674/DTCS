@@ -7,7 +7,13 @@ Menu_Run () {
 	echo "2: UR ROS Driver (No KinConfig)"
 	echo "3: UR ROS Driver (KinConfig)"
 	echo "4: ROS Isaac Action Connector"
-	echo "5: IsaacSIM with ros_workspace sourced"
+	echo "5: ROS Isaac Camera Start Show"
+	echo "6: ROS Isaac Camera Start Calibrated"
+	echo "7: ROS Isaac Camera Stereo Start"
+	echo "8: ROS Isaac Camera Stereo View"
+	echo "9: ROS Isaac Camera Calibration"
+	echo "10: ROS Isaac Camera Stereo Calibration"
+	echo "11: IsaacSIM with ros_workspace sourced"
 	echo "98: ROS Isaac Moveit Connector"
 	echo "99: UR ROS2 Driver"
 	echo ""
@@ -18,7 +24,13 @@ Menu_Run () {
 			2) Run_UR_ROS_Driver_NKC; break;;
 			3) Run_UR_ROS_Driver_KC; break;;
 			4) Run_ROS_Isaac_Action_Connector; break;;
-			5) Run_Isaac_ROS_Source; break;;
+			5) Run_ROS_Isaac_Camera_Start; break;;
+			6) Run_ROS_Isaac_Camera_Start_Calibrated; break;;
+			7) Run_ROS_Isaac_Camera_Stereo_Start; break;;
+			8) Run_ROS_Isaac_Camera_Stereo_View; break;;
+			9) Run_ROS_Isaac_Camera_Calibration; break;;
+			10) Run_ROS_Isaac_Camera_Stereo_Calibration; break;;
+			11) Run_Isaac_ROS_Source; break;;
 			98) Run_ROS_Isaac_Moveit_Connector; break;;
 			99) Run_UR_ROS2_Driver; break;;
 			[Xx]* ) break;;
