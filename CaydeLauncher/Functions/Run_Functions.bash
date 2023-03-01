@@ -36,12 +36,12 @@ Run_ROS_Isaac_Action_Connector () {
 
 Run_ROS_Isaac_Camera_Start () {	
 	echo "Launching isaac_ur5_camera_show"
-	roslaunch isaac_ur5_cam cam_both_show.launch LDV:=${LeftDevVideo} RDV:=${RightDevVideo} ResX:=${ResX} ResY:=${ResY}
+	roslaunch isaac_ur5_cam Camera.launch LDV:=${LeftDevVideo} RDV:=${RightDevVideo} ResX:=${ResX} ResY:=${ResY} Calibrated:=false Show:=true
 }
 
 Run_ROS_Isaac_Camera_Start_Calibrated () {	
 	echo "Launching isaac_ur5_camera calibrated"
-	roslaunch isaac_ur5_cam cam_both_calibrated.launch LDV:=${LeftDevVideo} RDV:=${RightDevVideo} ResX:=${ResX} ResY:=${ResY}
+	roslaunch isaac_ur5_cam Camera.launch LDV:=${LeftDevVideo} RDV:=${RightDevVideo} ResX:=${ResX} ResY:=${ResY} Calibrated:=true Show:=true
 }
 
 Run_ROS_Isaac_Camera_Stereo_Start () {

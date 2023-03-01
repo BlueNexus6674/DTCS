@@ -17,8 +17,8 @@ Checkerboard = (CheckerboardX, CheckerboardY)
 world_scale = 0.035
 
 # Set the path to the images captured by the left and right cameras
-pathL = "./CalibData/Live/Img/"
-pathR = "./CalibData/Live/Img/"
+pathL = "../Calibration_Images/Live/Img/"
+pathR = "../Calibration_Images/Live/Img/"
 totalImages = 27
  
 # Termination criteria for refining the detected corners
@@ -116,7 +116,7 @@ Right_Stereo_Map= cv2.initUndistortRectifyMap(new_mtxR, distR, rect_R, proj_mat_
 print("")
 print("Saving OpenCV Params ......")
 print("")
-cv_file = cv2.FileStorage("./CalibData/Calibration.xml", cv2.FILE_STORAGE_WRITE)
+cv_file = cv2.FileStorage("../config/output/Calibration.xml", cv2.FILE_STORAGE_WRITE)
 cv_file.write("Left_Stereo_Map_x",Left_Stereo_Map[0])
 cv_file.write("Left_Stereo_Map_y",Left_Stereo_Map[1])
 cv_file.write("Right_Stereo_Map_x",Right_Stereo_Map[0])
@@ -182,11 +182,11 @@ R_Proj_Matrix_Data3 = ", ".join(R_Proj_Matrix_Data3.split())
 print ("Writing to ROS Calibration Files...")
 
 
-file = open("./CalibData/ROSLeft.yaml", 'w')
+file = open("../config/output/ROSLeft.yaml", 'w')
 file.write("")
 file.close()
 	
-file = open("./CalibData/ROSLeft.yaml", 'a')
+file = open("../config/output/ROSLeft.yaml", 'a')
 file.write("image_width: " + str(wL) + "\n")
 file.write("image_height: " + str(hL) + "\n")
 file.write("camera_name: left \n")
@@ -217,11 +217,11 @@ file.close()
 
 print ("ROS Left Complete...")
 
-file = open("./CalibData/ROSRight.yaml", 'w')
+file = open("../config/output/ROSRight.yaml", 'w')
 file.write("")
 file.close()
 	
-file = open("./CalibData/ROSRight.yaml", 'a')
+file = open("../config/output/ROSRight.yaml", 'a')
 file.write("image_width: " + str(wR) + "\n")
 file.write("image_height: " + str(hR) + "\n")
 file.write("camera_name: right \n")
@@ -254,7 +254,7 @@ print ("ROS Right Complete...")
 print ("ROS Write Complete")
 print("") 
 
-print("Starting ReProjection Error Right")
+print("Starting Re-Projection Error Right")
 mean_error = 0
 for i in range(len(obj_pts)):
 	imgpoints2, _ = cv2.projectPoints(obj_pts[i], rvecsL[i], tvecsL[i], new_mtxL, distL)
@@ -263,7 +263,7 @@ for i in range(len(obj_pts)):
 print( "total error: {}".format(mean_error/len(obj_pts)) )
 print("")
 
-print("Starting ReProjection Error Right")
+print("Starting Re-Projection Error Right")
 mean_error = 0
 for i in range(len(obj_pts)):
 	imgpoints2, _ = cv2.projectPoints(obj_pts[i], rvecsR[i], tvecsR[i], new_mtxR, distR)
