@@ -146,7 +146,7 @@ Install_Linux_Config () {
 	sudo apt upgrade -y
 	
 	echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-	echo "${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
+	echo "source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
 }
 
 Install_ROS_Noetic () {
