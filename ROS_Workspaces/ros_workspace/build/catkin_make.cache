@@ -1,0 +1,2 @@
+isaac_moveit_connector:isaac_ur5_cam:isaac_ur5_connector:ur5withrg2
+-DCATKIN_DEVEL_PREFIX=/home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/install -G Unix Makefiles

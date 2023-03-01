@@ -1,0 +1,8 @@
+prefix=/home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/devel
+
+Name: isaac_ur5_connector
+Description: Description of isaac_ur5_connector
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
