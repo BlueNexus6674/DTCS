@@ -20,6 +20,9 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 
 ```Developing and Implementing a Digital Twin Control System (DTCS) for a UR5 utilising ROS and Nvidia ISaac SIM```
 
+Future additions:
+- Clear tool output mask
+- Add settings config
 
 ## Usage:
 <p align="center">
