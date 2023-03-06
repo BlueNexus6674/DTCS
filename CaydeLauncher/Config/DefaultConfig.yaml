@@ -17,7 +17,7 @@ RobotIP: 192.168.0.100
 KinConfig: ${DTCSRepoPath}/IRL_Cayde_Kin_Config.yaml
 
 #Camera Setup
-LeftDevVideo: 3
+LeftDevVideo: 2
 RightDevVideo: 5
 ResX: 640
 ResY: 480
