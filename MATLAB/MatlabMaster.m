@@ -6,9 +6,9 @@ close all
 FC = FunctionContainer;
 
 % MATLAB Params
-Camera_Params = load("Left_Camera_Params.mat").Left_Camera_Params;
-CalibParametersX = load("Calib_Params.mat").CalibParametersX;
-CalibParametersY = load("Calib_Params.mat").CalibParametersY;
+Camera_Params = load("~/Documents/DTCS/MATLAB/Params/Left_Camera_Params.mat").Left_Camera_Params;
+CalibParametersX = load("~/Documents/DTCS/MATLAB/Params/Calib_Params.mat").CalibParametersX;
+CalibParametersY = load("~/Documents/DTCS/MATLAB/Params/Calib_Params.mat").CalibParametersY;
 
 % MATLAB Vars
 ComputationInfo = [0, (0.5), 0];
@@ -30,10 +30,14 @@ rosinit
 %ROS
 [Camera, CamError] = FC.ConnectToROSCameras();
 
+%Dx = [1000, 200, 300, 400];
+%Dy = [50, 200, 200, 200];
+
 for i = 1:4
     TopicName = "/MATLAB/Cube" + string(i);
     ROSPublishers(i) = rospublisher(TopicName, "geometry_msgs/Point");
 end
+%FC.ROSPublish(ROSPublishers, Dx, Dy);
 
 fprintf("\n--- Setup Complete ---\n")
 

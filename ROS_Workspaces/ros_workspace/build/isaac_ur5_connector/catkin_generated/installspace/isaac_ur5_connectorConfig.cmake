@@ -67,14 +67,14 @@ set(isaac_ur5_connector_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(isaac_ur5_connector_SOURCE_PREFIX /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/src/isaac_ur5_connector)
-  set(isaac_ur5_connector_DEVEL_PREFIX /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/devel)
+  set(isaac_ur5_connector_SOURCE_PREFIX /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/src/isaac_ur5_connector)
+  set(isaac_ur5_connector_DEVEL_PREFIX /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/devel)
   set(isaac_ur5_connector_INSTALL_PREFIX "")
   set(isaac_ur5_connector_PREFIX ${isaac_ur5_connector_DEVEL_PREFIX})
 else()
   set(isaac_ur5_connector_SOURCE_PREFIX "")
   set(isaac_ur5_connector_DEVEL_PREFIX "")
-  set(isaac_ur5_connector_INSTALL_PREFIX /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/install)
+  set(isaac_ur5_connector_INSTALL_PREFIX /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install)
   set(isaac_ur5_connector_PREFIX ${isaac_ur5_connector_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/install/lib;/opt/ros/noetic/lib)
+    foreach(path /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

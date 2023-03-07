@@ -145,6 +145,8 @@ Install_Linux_Config () {
 	sudo apt update
 	sudo apt upgrade -y
 	
+	sudo apt -y install v4l-utils 
+	
 	echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 	echo "source ${DTCSRepoPath}/ROS_Workspaces/ros_workspace/devel/setup.bash" >> ~/.bashrc
 }

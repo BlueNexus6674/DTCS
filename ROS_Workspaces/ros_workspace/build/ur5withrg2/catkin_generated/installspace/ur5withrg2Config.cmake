@@ -67,14 +67,14 @@ set(ur5withrg2_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(ur5withrg2_SOURCE_PREFIX /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/src/ur5withrg2)
-  set(ur5withrg2_DEVEL_PREFIX /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/devel)
+  set(ur5withrg2_SOURCE_PREFIX /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/src/ur5withrg2)
+  set(ur5withrg2_DEVEL_PREFIX /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/devel)
   set(ur5withrg2_INSTALL_PREFIX "")
   set(ur5withrg2_PREFIX ${ur5withrg2_DEVEL_PREFIX})
 else()
   set(ur5withrg2_SOURCE_PREFIX "")
   set(ur5withrg2_DEVEL_PREFIX "")
-  set(ur5withrg2_INSTALL_PREFIX /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/install)
+  set(ur5withrg2_INSTALL_PREFIX /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install)
   set(ur5withrg2_PREFIX ${ur5withrg2_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/install/lib;/opt/ros/noetic/lib)
+    foreach(path /home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "isaac_ur5_cam")
 set(isaac_ur5_cam_VERSION "0.0.0")
-set(isaac_ur5_cam_MAINTAINER "beyondtthehill <beyondtthehill@todo.todo>")
+set(isaac_ur5_cam_MAINTAINER "cayde <cayde@todo.todo>")
 set(isaac_ur5_cam_PACKAGE_FORMAT "2")
 set(isaac_ur5_cam_BUILD_DEPENDS "usb_cam")
 set(isaac_ur5_cam_BUILD_EXPORT_DEPENDS "usb_cam")

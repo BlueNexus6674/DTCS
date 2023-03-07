@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/install")
+  set(CMAKE_INSTALL_PREFIX "/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/build/gtest/googlemock/cmake_install.cmake")
+  include("/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/build/gtest/googlemock/cmake_install.cmake")
 
 endif()
 

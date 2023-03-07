@@ -1,4 +1,4 @@
-prefix=/home/beyondtthehill/Documents/DTCS/ROS_Workspaces/ros_workspace/devel
+prefix=/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/devel
 
 Name: isaac_moveit_connector
 Description: Description of isaac_moveit_connector

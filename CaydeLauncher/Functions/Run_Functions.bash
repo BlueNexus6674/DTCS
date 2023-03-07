@@ -36,38 +36,41 @@ Run_ROS_Isaac_Action_Connector () {
 
 Run_ROS_Isaac_Camera_Start () {	
 	echo "Launching isaac_ur5_camera_show"
-	roslaunch isaac_ur5_cam Camera.launch LDV:=${LeftDevVideo} RDV:=${RightDevVideo} ResX:=${ResX} ResY:=${ResY} Calibrated:=false Show:=true
+	roslaunch isaac_ur5_cam Camera.launch LDV:=${LeftDevVideo} ResX:=${ResX} ResY:=${ResY} Calibrated:=true Show:=true
 }
 
-Run_ROS_Isaac_Camera_Start_Calibrated () {	
-	echo "Launching isaac_ur5_camera calibrated"
-	roslaunch isaac_ur5_cam Camera.launch LDV:=${LeftDevVideo} RDV:=${RightDevVideo} ResX:=${ResX} ResY:=${ResY} Calibrated:=true Show:=true
-}
-
-Run_ROS_Isaac_Camera_Stereo_Start () {
-	echo "Launching stereo_image_proc"
-	ROS_NAMESPACE=stereo rosrun stereo_image_proc stereo_image_proc _approximate_sync:=True
-
-}
-
-Run_ROS_Isaac_Camera_Stereo_View () {
-	echo "Viewing Stereo"
-	rosrun image_view stereo_view stereo:=/stereo image:=image_rect_color _approximate_sync:=True
-}
-
-Run_ROS_Isaac_Camera_Calibration () {
-	rosrun camera_calibration cameracalibrator.py --approximate 0.1 --size 8x6 --square 0.0350 right:=/stereo/right/image_raw left:=/stereo/left/image_raw right_camera:=/stereo/right left_camera:=/stereo/left
-}
-
-Run_ROS_Isaac_Camera_Stereo_Calibration () {
-	rosrun rqt_reconfigure rqt_reconfigure
-}
+#Run_ROS_Isaac_Camera_Calibration () {
+#	rosrun camera_calibration cameracalibrator.py --approximate 0.1 --size 8x6 --square 0.0350 right:=/stereo/right/image_raw left:=/stereo/left/image_raw right_camera:=/stereo/right left_camera:=/stereo/left
+#}
 
 Run_Isaac_ROS_Source () {
 	echo "Launching IsaacSIM with ros_workspace sourced..."
 	${IsaacPath}/isaac-sim.sh
 }
 
+
+Run_ChangeCam () {
+	echo "Changing Cam Menu"
+	echo ""
+	v4l2-ctl --list-devices
+	echo ""
+	while true; do read -p "Select /dev/video(Left): " select
+		case $select in
+			[1-9]* LeftDevVideo=$select; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
+	while true; do read -p "Select /dev/video(Right): " select
+		case $select in
+			[1-9]* RightDevVideo=$select; break;;
+			[Xx]* ) break;;
+			* ) echo ${WAM};;
+		esac
+	done
+	echo "LeftDevVideo: $LeftDevVideo" >> ${DTCSRepoPath}/CaydeLauncher/Config/CustomConfig.yaml
+	echo "RightDevVideo: $RightDevVideo" >> ${DTCSRepoPath}/CaydeLauncher/Config/CustomConfig.yaml
+}
 
 Run_ROS_Isaac_Moveit_Connector () {
 	echo "WIP: Dev in progress"
