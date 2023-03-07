@@ -22,8 +22,7 @@ Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster Un
 
 
 Future additions:
-- Clear tool output mask
-- Add settings config
+- Auto-clear RTDE tool output mask for UR driver
 
 
 ## Usage:
