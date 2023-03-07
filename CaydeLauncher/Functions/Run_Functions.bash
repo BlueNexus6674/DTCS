@@ -56,14 +56,14 @@ Run_ChangeCam () {
 	echo ""
 	while true; do read -p "Select /dev/video(Left): " select
 		case $select in
-			[1-9]* LeftDevVideo=$select; break;;
+			[1-9]* ) LeftDevVideo=$select; break;;
 			[Xx]* ) break;;
 			* ) echo ${WAM};;
 		esac
 	done
 	while true; do read -p "Select /dev/video(Right): " select
 		case $select in
-			[1-9]* RightDevVideo=$select; break;;
+			[1-9]* ) RightDevVideo=$select; break;;
 			[Xx]* ) break;;
 			* ) echo ${WAM};;
 		esac
