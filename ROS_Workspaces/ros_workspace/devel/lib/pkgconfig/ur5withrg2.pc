@@ -1,8 +1,0 @@
-prefix=/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/devel
-
-Name: ur5withrg2
-Description: Description of ur5withrg2
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

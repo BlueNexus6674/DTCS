@@ -1,8 +1,0 @@
-prefix=/home/cayde/Documents/DTCS/ROS_Workspaces/ros_workspace/install
-
-Name: isaac_ur5_cam
-Description: Description of isaac_ur5_cam
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
