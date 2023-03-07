@@ -70,10 +70,10 @@ class PeckContext(DfLogicalState):
         self.is_eff_close_to_inactive_block = None
 
         self.timer = None
-        self.timerwait = 3 #5 1 #12
+        self.timerwait = 12 #5 1 #12
         self.time_at_last_diagnostics_print = None
         
-        self.peckheight = 0.08
+        self.peckheight = 0.02 #0.08 for Cubes 0.02 for QR
 
     @property
     def has_active_block(self):

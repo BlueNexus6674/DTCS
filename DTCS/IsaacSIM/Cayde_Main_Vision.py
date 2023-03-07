@@ -38,10 +38,14 @@ simulation_app.update()
 
 global X
 global Y
+global XOffset
+global YOffset
 global AcceptanceRange
 
 X = [0, 0, 0, 0]
 Y = [0, 0, 0, 0]
+XOffset = 1.12
+YOffset = 0.5
 XOld = [0, 0, 0, 0]
 YOld = [0, 0, 0, 0]
 AcceptanceRange = 0.01
@@ -227,10 +231,12 @@ def main():
 def Cube1Callback(Data):
 	global X
 	global Y
+	global XOffset
+	global YOffset
 	global AcceptanceRange
 	
-	TX = (Data.x/1000)-1.2
-	TY = (-Data.y/1000)+0.6
+	TX = (Data.x/1000)-XOffset
+	TY = (-Data.y/1000)+YOffset
 	
 	AXL = X[0] - AcceptanceRange
 	AXH = X[0] + AcceptanceRange 
@@ -245,10 +251,12 @@ def Cube1Callback(Data):
 def Cube2Callback(Data):
 	global X
 	global Y
+	global XOffset
+	global YOffset
 	global AcceptanceRange
 	
-	TX = (Data.x/1000)-1.2
-	TY = (-Data.y/1000)+0.6
+	TX = (Data.x/1000)-XOffset
+	TY = (-Data.y/1000)+YOffset
 	
 	AXL = X[1] - AcceptanceRange
 	AXH = X[1] + AcceptanceRange 
@@ -262,10 +270,12 @@ def Cube2Callback(Data):
 def Cube3Callback(Data):
 	global X
 	global Y
+	global XOffset
+	global YOffset
 	global AcceptanceRange
 	
-	TX = (Data.x/1000)-1.2
-	TY = (-Data.y/1000)+0.6
+	TX = (Data.x/1000)-XOffset
+	TY = (-Data.y/1000)+YOffset
 	
 	AXL = X[2] - AcceptanceRange
 	AXH = X[2] + AcceptanceRange 
@@ -279,10 +289,12 @@ def Cube3Callback(Data):
 def Cube4Callback(Data):
 	global X
 	global Y
+	global XOffset
+	global YOffset
 	global AcceptanceRange
 	
-	TX = (Data.x/1000)-1.2
-	TY = (-Data.y/1000)+0.6
+	TX = (Data.x/1000)-XOffset
+	TY = (-Data.y/1000)+YOffset
 	
 	AXL = X[3] - AcceptanceRange
 	AXH = X[3] + AcceptanceRange 

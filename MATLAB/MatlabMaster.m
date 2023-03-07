@@ -56,19 +56,22 @@ while (true)
         TagTranslations = FC.FindAprilTags(UImg, Camera_Params, TagInfo);
 
         % Get Displacements
-        Dv = FC.ObjectDisplacements(TagTranslations);
-
-        % Calibrate Displacements
-        [Dx, Dy] = FC.CalibrateDisplacements(Dv, Scale, CalibParametersX, CalibParametersY);
+        [Dx, Dy] = FC.ObjectDisplacements(TagTranslations);
         
+        try
+        % Calibrate Displacements
+        [Dx, Dy] = FC.CalibrateDisplacements(Dx, Dy, Scale, CalibParametersX, CalibParametersY);
+
         % Publish
         FC.ROSPublish(ROSPublishers, Dx, Dy);
 
         % Print
         FC.PrintObjectDisplacements(Dx, Dy);
-        
+        catch ERROR
+            disp("Nothing Found")
+        end
         %Sleep ---------------
-        imshow(LUImg);
+        %imshow(UImg);
         pause(ComputationInfo(3));
         ComputationInfo(1) = ComputationInfo(1) + 1;
     else

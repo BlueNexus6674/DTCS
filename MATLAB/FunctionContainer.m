@@ -16,10 +16,11 @@ classdef FunctionContainer
                 % Try Connect To ROS
                 try
                     Camera = rossubscriber('/stereo/left/image_raw', 'DataFormat', 'struct');
-                    CMsg = receive(LeftCam, 1);
+                    CMsg = receive(Camera, 1);
             
                     IsMsgStruct = isa(CMsg, "struct");
                 catch ERROR1
+                    %rethrow(ERROR1)
                     CMsg = 0;
                 end
             
@@ -75,7 +76,7 @@ classdef FunctionContainer
 
         function [TagTranslations] = FindAprilTags(UImg, Camera_Params, TagInfo)
             % Var
-            TagTranslations = zeros(3, 5);
+            TagTranslations = zeros(5, 3);
             OriginExist = 0;
             ObjectExist = [0, 0, 0, 0];
 
@@ -83,78 +84,79 @@ classdef FunctionContainer
             OriginTagNum = TagInfo(3);
             
             % Object Tags
-            if (OriginTagNum)
+            if (string(OriginTagNum) == "1")
                 ObjectTagNum = [2, 3, 4, 5];
             else
                 ObjectTagNum = [1, 2, 3, 4];
             end
-            
+
             % Read April Tags
-            [TagID, TagLocation, TagPose] = readAprilTag(UImg, TagInfo(1), Camera_Params.Intrinsics, TagInfo(2));
-            
+            [TagID, TagLocation, TagPose] = readAprilTag(UImg, TagInfo(1), Camera_Params.Intrinsics, str2double(TagInfo(2)));
+
             % Sort TagID's 
             [TagIDRows, TagIDCols] = size(TagID);
 
             for i = 1:TagIDCols
                 switch TagID(i)
-                    case OriginTagNum
-                        TagTranslations(:, 1) = TagPose(:, i).Translation;
+                    case str2double(OriginTagNum)
+                        TagTranslations(1, :) = TagPose(:, i).Translation;
                         OriginExist = 1;
 
                     case ObjectTagNum(1)
-                        TagTranslations(:, 2) = TagPose(:, i).Translation;
+                        TagTranslations(2, :) = TagPose(:, i).Translation;
                         ObjectExist(1) = 1;
 
                     case ObjectTagNum(2)
-                        TagTranslations(:, 3) = TagPose(:, i).Translation;
+                        TagTranslations(3, :) = TagPose(:, i).Translation;
                         ObjectExist(2) = 1;
 
                     case ObjectTagNum(3)
-                        TagTranslations(:, 4) = TagPose(:, i).Translation;
+                        TagTranslations(4, :) = TagPose(:, i).Translation;
                         ObjectExist(3) = 1;
 
                     case ObjectTagNum(4)
-                        TagTranslations(:, 5) = TagPose(:, i).Translation;
+                        TagTranslations(5, :) = TagPose(:, i).Translation;
                         ObjectExist(4) = 1;
                 end
             end
-           
-            for i = 1:len(ObjectExist)
+                
+            for i = 1:4
                 if (ObjectExist(i) ~= 1)
-                    TagTranslations(:, i) = [-999, -999, -999];
+                    TagTranslations(i+1, :) = [-999, -999, -999];
                 end
             end
 
             if (OriginExist ~= 1)
-                TagTranslations(:, 1) = [-999, -999, -999];
+                TagTranslations(1, :) = [-999, -999, -999];
                 warning("Origin Tag Not Found");
             end
         end
 
-        function Dv = ObjectDisplacements(TagTranslations)
-            if (TagTranslations(:, 1) ~= [-999, -999, -999])
-                Dx = TagTranslations(1, :);
-                Dy = TagTranslations(3, :);
-                Dv(1, :) = Dx;
-                Dv(2, :) = Dy;
-            end
+        function [Dx, Dy] = ObjectDisplacements(TagTranslations)
+            Dx = TagTranslations(:, 1);
+            Dy = TagTranslations(:, 3);
         end
 
-        function [Dx, Dy] = CalibrateDisplacements(Dv, Scale, CalibParamsX, CalibParamsY)
-            InputDv = Dv;
-            [Rows, Cols] = size(InputDv);
+        function [OutDx, OutDy] = CalibrateDisplacements(Dx, Dy, Scale, CalibParamsX, CalibParamsY)
+            OutDy = [-999, -999, -999, -999];
+            OutDy = [-999, -999, -999, -999];
+            [Rows, Cols] = size(Dx);
             for i = 2:Rows
-                if (InputDv(i, :) ~= [-999, -999])
+                if ((Dx(i) ~= -999) & (Dy(i) ~= -999))
                     %Displacement
-                    Dv(i, :) = InputDv(1, :) - InputDv(i, :);
+                    OutDx(i-1) = Dx(1) - Dx(i);
+                    OutDy(i-1) = Dy(1) - Dy(i);
                     
                     % Zero and Span Calibration
-                    Dv(i, 1) = Dv(i, 1)*Scale(1);
-                    Dv(i, 2) = abs(Dv(i, 2)*cosd(15))*Scale(2);
+                    OutDx(i-1) = OutDx(i-1)*Scale(1);
+                    OutDy(i-1) = abs(OutDy(i-1)*cosd(15))*Scale(2);
 
                     % Calib
-                    Dx(i-1) = CalibrateXY(Dv(i, 1), CalibParamsX);
-                    Dy(i-1) = CalibrateXY(Dv(i, 2), CalibParamsY);
+                    OutDx(i-1) = CalibrateXY(OutDx(i-1), CalibParamsX);
+                    OutDy(i-1) = CalibrateXY(OutDy(i-1), CalibParamsY);
+                %else
+                    %OutDx(i-1) = -999;
+                    %OutDy(i-1) = -999;
                 end
             end
         end
