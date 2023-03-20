@@ -39,12 +39,13 @@ class LabScript(BaseSample):
         return
  
     def setup_scene(self):
- 
+ 	UserName = os.getlogin()
+ 	
         world = self.get_world()
         world.scene.add_default_ground_plane()
  
         #UR5_with_RG2 Inclusion
-        ur5_with_rg2_path="/home/cayde/Documents/IsaacSimURDF/ur5withrg2/ur5withrg2.usd"
+        ur5_with_rg2_path="/home/" + UserName + "/Documents/DTCS/ROS_Workspaces/ros_workspace/src/ur5withrg2/USD/ur5withrg2/ur5withrg2.usd"
  
         #Add UR_1
         add_reference_to_stage(usd_path=ur5_with_rg2_path, prim_path="/World/ur5_with_rg2_target")
