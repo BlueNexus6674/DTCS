@@ -19,7 +19,7 @@ do
 	echo "2: Isaac Cortex (SA) Menu"
 	echo "3: Isaac GYM Menu"
 	echo "4: Launch A Folder Menu"
-	echo "5: Install Enviroment Menu"
+	echo "5: Install Environment Menu"
 	echo ""
 	
 
