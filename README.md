@@ -31,7 +31,7 @@ Future additions:
 </p>
 
 <p align="center">
- <img src="https://user-images.githubusercontent.com/65248566/218261000-a43e2090-6c92-48e2-840b-360386d21f69.png" />
+ <img src="https://user-images.githubusercontent.com/65248566/231869077-0ab8451a-de1a-4423-940f-e137e4923bdf.png" />
 </p>
 
 # Install and Config Instructions:
