@@ -4,25 +4,25 @@ Functions:
 - Provides a launcher (CaydeLauncher) to automize:
   - Running (Executing) common ROS commands.
   - Launching Isaac SIM Standalone Applications (commonly Cortex / Gym).
-  - Opening obscure folders.
+  - Opening obscure dev folders.
   - Installing the dev environment (such as ROS, ROS2, IsaacSIM, etc).
 - IsaacSIM_Python
   - Adds cayde_robot.py, a purpose-built script that makes it easy to add custom robots in IsaacSIM.
 - DTCS
-  - Folder of behaviours and descriptions for a UR5 nicknamed Cayde
+  - Folder of behaviours and descriptions for a UR5 nicknamed Cayde.
 - ROS/ROS2 Master Workspaces. Contains dev and active workspaces.
 
 Currently only compatible with Ubuntu 20.04, support is provided for:
-- Isaac SIM 2022.2
-- ROS Noetic
+- Isaac SIM 2022.2.
+- ROS Noetic.
 
 Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster University for the dissertation titled:
 
-```Developing and Implementing a Digital Twin Control System (DTCS) for a UR5 utilising ROS and Nvidia ISaac SIM```
+```Developing and Implementing a Digital Twin Control System for a UR5 utilising ROS and Nvidia ISaac SIM```
 
 
 Future additions:
-- Auto-clear RTDE tool output mask for UR driver
+- Auto-clear RTDE tool output mask for UR driver.
 
 
 ## Usage:
@@ -44,18 +44,18 @@ sudo chmod u+x CaydeSetupScript.bash
 ~/Documents/CaydeSetupScript.bash
 ```
 
-2. Select ```Auto-Install```
+2. Select ```Auto-Install```.
 
 3. Post-install, restart.
 
-4. Add CaydeLauncher to Favourites from AppDrawer
+4. Add CaydeLauncher to Favourites from AppDrawer.
 
-5. Optionally delete CaydeSetupScript.bash 
+5. Optionally delete CaydeSetupScript.bash.
 
-6. Open CaydeLauncher
+6. Open CaydeLauncher.
 
-7. Select ```Install Enviroment Menu```
+7. Select ```Install Enviroment Menu```.
 
-8. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL)
+8. Install Enviroment Menu options as needed (OR USE AUTO-INSTALL).
 
-It's recommended to install and launch IsaacSIM at least once before using this repository. 
+It is recommended to install and launch IsaacSIM at least once before using this repository. 
