@@ -18,7 +18,7 @@ Currently only compatible with Ubuntu 20.04, support is provided for:
 
 Authored by LW, Student Undergraduate of Mechatronic Engineering at Lancaster University for the dissertation titled:
 
-```Developing and Implementing a Digital Twin Control System for a UR5 utilising ROS and Nvidia ISaac SIM```
+```Developing and Implementing a Digital Twin Control System for a UR5 utilising ROS and Nvidia Isaac SIM```
 
 
 Future additions:
